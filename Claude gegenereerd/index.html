@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politiek Transparant NL — Nederlandse Politiek in Cijfers</title>
+  <meta name="description" content="Overzicht van alle Nederlandse partijen, verkiezingsuitslagen 1998–2023, kabinetten en beloftes. Volledig transparant.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- BANNER -->
+<div class="banner">
+  📊 Politiek Transparant NL — Alle data is gebaseerd op openbare bronnen. Bijgewerkt t/m 2024.
+</div>
+
+<!-- NAVIGATIE -->
+<nav class="navbar" role="navigation" aria-label="Hoofdnavigatie">
+  <div class="navbar-inner">
+    <a class="nav-logo" href="#" onclick="showPage('home')">
+      <div class="nav-logo-icon">🏛</div>
+      <span>Politiek Transparant NL</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a onclick="showPage('home')"        data-page="home">Home</a></li>
+      <li><a onclick="showPage('partijen')"    data-page="partijen">Partijen</a></li>
+      <li><a onclick="showPage('kabinetten')"  data-page="kabinetten">Regeerperiodes</a></li>
+      <li><a onclick="showPage('vergelijk')"   data-page="vergelijk">Vergelijk</a></li>
+      <li><a onclick="showPage('over')"        data-page="over">Over</a></li>
+    </ul>
+
+    <div class="nav-search" id="navSearch">
+      <div style="position:relative;">
+        <input type="text" class="search-input" id="searchInput"
+               placeholder="🔍 Zoek partij, kabinet..."
+               oninput="handleSearch(this.value)"
+               onblur="setTimeout(()=>closeSearch(),200)"
+               autocomplete="off">
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu openen"
+            onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================================
+     PAGE: HOME
+     ============================================================ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-label">🇳🇱 Openbare Politieke Data</div>
+        <h1>Nederlandse Politiek<br><span>Volledig Transparant</span></h1>
+        <p>Verken verkiezingsuitslagen van 1998 tot 2023, kabinetsformaties, partijbeloftes en hun nakoming — alles overzichtelijk op één plek.</p>
+        <div class="hero-btns">
+          <button class="btn btn-primary" onclick="showPage('partijen')">
+            🏛 Bekijk alle partijen
+          </button>
+          <button class="btn btn-outline" onclick="showPage('vergelijk')">
+            ⚖️ Vergelijk partijen
+          </button>
+        </div>
+      </div>
+      <div class="hero-stats" id="heroStats">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTIJEN OVERZICHT -->
+  <div class="section">
+    <div class="section-header">
+      <div>
+        <div class="section-title">Partijen in de Tweede Kamer</div>
+        <div class="section-sub">Klik op een partij voor uitgebreide informatie</div>
+      </div>
+      <div class="filter-chips" id="homeFilterChips">
+        <div class="chip active" onclick="filterPartijen('alle', this)">Alle</div>
+        <div class="chip" onclick="filterPartijen('actief', this)">Actief</div>
+        <div class="chip" onclick="filterPartijen('coalitie', this)">Coalitie 2024</div>
+        <div class="chip" onclick="filterPartijen('historisch', this)">Historisch</div>
+      </div>
+    </div>
+    <div class="partijen-grid" id="partijGrid">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+
+  <!-- KABINETTEN TIJDLIJN -->
+  <div style="background: var(--wit); padding: 2rem 0; margin: 1rem 0;">
+    <div class="section" style="padding-top: 0; padding-bottom: 0;">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Kabinetten 1998–2025</div>
+          <div class="section-sub">Klik op een kabinet voor details</div>
+        </div>
+      </div>
+      <div class="scroll-hint">↔ Scroll horizontaal voor de volledige tijdlijn</div>
+      <div class="timeline-scroll">
+        <div class="timeline" id="kabinetTimeline">
+          <div class="timeline-line"></div>
+          <!-- Filled by JS -->
+        </div>
+      </div>
+      <div class="kabinet-detail" id="kabinetDetail">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- VERKIEZINGSGRAFIEK OVERZICHT -->
+  <div class="section">
+    <div class="section-header">
+      <div>
+        <div class="section-title">Zetels door de jaren heen</div>
+        <div class="section-sub">De grootste partijen van 1998 tot 2023</div>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="overviewChart" height="80"></canvas>
+    </div>
+    <div class="legend" id="overviewLegend"></div>
+  </div>
+
+</div><!-- /page-home -->
+
+
+<!-- ============================================================
+     PAGE: PARTIJEN
+     ============================================================ -->
+<div id="page-partijen" class="page">
+  <div class="section">
+    <div class="breadcrumb">
+      <a onclick="showPage('home')">Home</a> › Partijen
+    </div>
+    <div class="section-header">
+      <div>
+        <div class="section-title">Alle Partijen</div>
+        <div class="section-sub">21 partijen — klik voor uitgebreide details</div>
+      </div>
+    </div>
+
+    <div class="filter-chips" id="partijFilterChips">
+      <div class="chip active" onclick="filterPartijen2('alle', this)">Alle</div>
+      <div class="chip" onclick="filterPartijen2('actief', this)">Actief</div>
+      <div class="chip" onclick="filterPartijen2('links', this)">Links</div>
+      <div class="chip" onclick="filterPartijen2('rechts', this)">Rechts</div>
+      <div class="chip" onclick="filterPartijen2('christen', this)">Christelijk</div>
+      <div class="chip" onclick="filterPartijen2('historisch', this)">Historisch</div>
+    </div>
+
+    <div class="partijen-grid" id="partijGrid2">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+</div><!-- /page-partijen -->
+
+
+<!-- ============================================================
+     PAGE: KABINETTEN
+     ============================================================ -->
+<div id="page-kabinetten" class="page">
+  <div class="section">
+    <div class="breadcrumb">
+      <a onclick="showPage('home')">Home</a> › Regeerperiodes
+    </div>
+    <div class="section-header">
+      <div>
+        <div class="section-title">Regeerperiodes 1998–2025</div>
+        <div class="section-sub">10 kabinetten — leden en beleid per kabinet</div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">↔ Scroll horizontaal voor de volledige tijdlijn</div>
+    <div class="timeline-scroll">
+      <div class="timeline" id="kabinetTimeline2">
+        <div class="timeline-line"></div>
+      </div>
+    </div>
+    <div class="kabinet-detail" id="kabinetDetail2" style="margin-top:1.5rem;"></div>
+
+    <!-- KABINETTEN LIJST -->
+    <div id="kabinettenLijst" style="margin-top: 2rem;">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+</div><!-- /page-kabinetten -->
+
+
+<!-- ============================================================
+     PAGE: VERGELIJK
+     ============================================================ -->
+<div id="page-vergelijk" class="page">
+  <div class="section">
+    <div class="breadcrumb">
+      <a onclick="showPage('home')">Home</a> › Vergelijk
+    </div>
+    <div class="section-title" style="margin-bottom:1.5rem;">Vergelijk partijen</div>
+    <div class="section-sub" style="margin-bottom:1.5rem;">Selecteer 2 of 3 partijen om side-by-side te vergelijken</div>
+
+    <div class="vergelijk-section">
+      <div class="vergelijk-selectie" id="vergelijkSelectie">
+        <div>
+          <label style="font-size:.8rem;font-weight:600;display:block;margin-bottom:.4rem;color:var(--tekst-licht)">Partij 1</label>
+          <select class="vergelijk-select" id="vsel1" onchange="updateVergelijk()">
+            <option value="">— Kies partij —</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:.8rem;font-weight:600;display:block;margin-bottom:.4rem;color:var(--tekst-licht)">Partij 2</label>
+          <select class="vergelijk-select" id="vsel2" onchange="updateVergelijk()">
+            <option value="">— Kies partij —</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:.8rem;font-weight:600;display:block;margin-bottom:.4rem;color:var(--tekst-licht)">Partij 3 (optioneel)</label>
+          <select class="vergelijk-select" id="vsel3" onchange="updateVergelijk()">
+            <option value="">— Geen —</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="vergelijkResult">
+        <div class="empty-state">
+          <div class="empty-state-icon">⚖️</div>
+          <h3>Selecteer partijen hierboven</h3>
+          <p>Kies 2 of 3 partijen om te vergelijken op zetels, beloftes, stemgedrag en financiën.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-vergelijk -->
+
+
+<!-- ============================================================
+     PAGE: OVER
+     ============================================================ -->
+<div id="page-over" class="page">
+  <div class="section">
+    <div class="breadcrumb">
+      <a onclick="showPage('home')">Home</a> › Over
+    </div>
+    <div style="max-width:700px;">
+      <div class="section-title" style="margin-bottom:1.5rem;">Over Politiek Transparant NL</div>
+
+      <div style="background:var(--wit);border-radius:var(--radius-lg);padding:2rem;box-shadow:var(--schaduw-sm);margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:.75rem;font-size:1.1rem;">🎯 Missie</h3>
+        <p style="color:var(--tekst-licht);line-height:1.8;">Politiek Transparant NL brengt Nederlandse politieke data samen op één toegankelijke plek. We geloven dat burgers recht hebben op heldere, feitelijke informatie over hoe partijen presteren — niet alleen wat ze beloven, maar ook wat ze waarmaken.</p>
+      </div>
+
+      <div style="background:var(--wit);border-radius:var(--radius-lg);padding:2rem;box-shadow:var(--schaduw-sm);margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:.75rem;font-size:1.1rem;">📊 De Data</h3>
+        <p style="color:var(--tekst-licht);line-height:1.8;margin-bottom:.75rem;">Alle data is afkomstig van openbare bronnen:</p>
+        <ul style="color:var(--tekst-licht);font-size:.9rem;line-height:2;padding-left:1.5rem;">
+          <li>Kiesraad — officiële verkiezingsuitslagen 1998–2023</li>
+          <li>Rijksoverheid — kabinetsinformatie en -formaties</li>
+          <li>Tweede Kamer — stemgedrag en aanwezigheid (tweedekamer.nl)</li>
+          <li>ProDemos — partijprofielen en ideologieën</li>
+          <li>Parlement.com — historische kabinetsdata</li>
+          <li>WPR / PoliCheck — belofte-nakominganalyse</li>
+          <li>Ministerie van BZK — partijsubsidies en financiën</li>
+        </ul>
+      </div>
+
+      <div style="background:var(--wit);border-radius:var(--radius-lg);padding:2rem;box-shadow:var(--schaduw-sm);margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:.75rem;font-size:1.1rem;">⚖️ Neutraliteit</h3>
+        <p style="color:var(--tekst-licht);line-height:1.8;">Deze site heeft geen politieke voorkeur. We presenteren feiten en cijfers zo objectief mogelijk. De beoordeling van beloftes is gebaseerd op onafhankelijke analyses van politicologen en journalisten.</p>
+      </div>
+
+      <div style="background:var(--blauw);color:var(--wit);border-radius:var(--radius-lg);padding:2rem;margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:.75rem;font-size:1.1rem;color:var(--wit);">📬 Contact</h3>
+        <p style="color:rgba(255,255,255,.85);line-height:1.8;">Heb je fouten gevonden of wil je data aanvullen? Stuur een mail naar <strong>info@politiektransparant.nl</strong></p>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-over -->
+
+
+<!-- ============================================================
+     PARTIJ DETAIL MODAL
+     ============================================================ -->
+<div class="modal-overlay" id="partijModal" onclick="closeModalOutside(event)">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" onclick="closeModal()" aria-label="Sluiten">✕</button>
+
+    <!-- Color bar top -->
+    <div class="modal-partij-kleur-bar" id="modalKleurBar"></div>
+
+    <!-- Header -->
+    <div class="modal-header" id="modalHeader">
+      <!-- Filled by JS -->
+    </div>
+
+    <!-- Info cards -->
+    <div class="info-grid" id="modalInfoGrid" style="padding: 0 2rem;">
+      <!-- Filled by JS -->
+    </div>
+
+    <!-- Tabs -->
+    <div class="modal-tabs" id="modalTabs">
+      <div class="modal-tab active" onclick="switchTab('profiel')">Profiel</div>
+      <div class="modal-tab" onclick="switchTab('zetels')">Zetels</div>
+      <div class="modal-tab" onclick="switchTab('beloftes')">Beloftes</div>
+      <div class="modal-tab" onclick="switchTab('stemgedrag')">Stemgedrag</div>
+      <div class="modal-tab" onclick="switchTab('financien')">Financiën</div>
+      <div class="modal-tab" onclick="switchTab('aanwezigheid')">Aanwezigheid</div>
+    </div>
+
+    <!-- Body -->
+    <div class="modal-body">
+
+      <!-- TAB: Profiel -->
+      <div class="tab-panel active" id="tab-profiel">
+        <div id="profielContent"><!-- JS --></div>
+      </div>
+
+      <!-- TAB: Zetels -->
+      <div class="tab-panel" id="tab-zetels">
+        <h4 style="margin-bottom:1rem;">Zetels per verkiezing</h4>
+        <div class="chart-wrap">
+          <canvas id="zetelsChart" height="100"></canvas>
+        </div>
+        <div id="zetelsTable" style="margin-top:1.25rem;"></div>
+      </div>
+
+      <!-- TAB: Beloftes -->
+      <div class="tab-panel" id="tab-beloftes">
+        <div id="beloftesContent"><!-- JS --></div>
+      </div>
+
+      <!-- TAB: Stemgedrag -->
+      <div class="tab-panel" id="tab-stemgedrag">
+        <h4 style="margin-bottom:.75rem;">Stemgedrag op historische wetten</h4>
+        <p style="font-size:.85rem;color:var(--tekst-licht);margin-bottom:1rem;">Hoe stemde deze partij op 12 belangrijke wetten?</p>
+        <div style="overflow-x:auto;">
+          <table class="stem-table" id="stemTable"><!-- JS --></table>
+        </div>
+      </div>
+
+      <!-- TAB: Financiën -->
+      <div class="tab-panel" id="tab-financien">
+        <h4 style="margin-bottom:1rem;">Partijfinanciering 2018–2023</h4>
+        <div class="chart-wrap">
+          <canvas id="financienChart" height="110"></canvas>
+        </div>
+        <div class="legend" style="margin-top:.75rem;">
+          <div class="legend-item"><div class="legend-dot" style="background:#154273;"></div> Subsidie</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#D4A017;"></div> Donaties</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#27AE60;"></div> Contributies</div>
+        </div>
+      </div>
+
+      <!-- TAB: Aanwezigheid -->
+      <div class="tab-panel" id="tab-aanwezigheid">
+        <h4 style="margin-bottom:1rem;">Aanwezigheid bij stemmingen (%)</h4>
+        <div class="chart-wrap">
+          <canvas id="aanwezigheidChart" height="100"></canvas>
+        </div>
+        <div id="aanwezigheidTable" style="margin-top:1.25rem;"></div>
+      </div>
+
+    </div><!-- /modal-body -->
+  </div>
+</div>
+
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Terug naar boven">↑</button>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">🏛 Politiek Transparant NL</div>
+      <p class="footer-desc">Een onafhankelijk platform dat Nederlandse politieke data toegankelijk maakt voor iedereen. Geen mening, alleen feiten en cijfers.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigatie</h4>
+      <ul class="footer-links">
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('partijen')">Partijen</a></li>
+        <li><a onclick="showPage('kabinetten')">Regeerperiodes</a></li>
+        <li><a onclick="showPage('vergelijk')">Vergelijk</a></li>
+        <li><a onclick="showPage('over')">Over</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Bronnen</h4>
+      <ul class="footer-links">
+        <li><a href="https://www.kiesraad.nl" target="_blank" rel="noopener">Kiesraad</a></li>
+        <li><a href="https://www.tweedekamer.nl" target="_blank" rel="noopener">Tweede Kamer</a></li>
+        <li><a href="https://www.rijksoverheid.nl" target="_blank" rel="noopener">Rijksoverheid</a></li>
+        <li><a href="https://www.parlement.com" target="_blank" rel="noopener">Parlement.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    ⚠️ <strong>Disclaimer:</strong> De data op deze site is gebaseerd op openbare bronnen en is zo nauwkeurig mogelijk samengesteld. Beoordelingen van beloftes zijn gebaseerd op onafhankelijke analyses. Voor officiële informatie, raadpleeg altijd de primaire bronnen.
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Politiek Transparant NL</span>
+    <span>Data bijgewerkt t/m november 2024</span>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
