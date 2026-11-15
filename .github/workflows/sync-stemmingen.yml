@@ -1,0 +1,56 @@
+name: Stemmingen ophalen
+
+on:
+  schedule:
+    # Elk uur, op minuut 17. De Kamer stemt meestal op dinsdag, maar ook op andere dagen.
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      vanaf:
+        description: "Opnieuw ophalen vanaf (ISO, UTC), bv. 2023-12-06T00:00:00Z. Leeg = verder waar we waren."
+        required: false
+      max_paginas:
+        description: "Stop na N pagina's (voor een korte test). Leeg = alles."
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-stemmingen
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Stemmingen ophalen
+        env:
+          VANAF: ${{ github.event.inputs.vanaf }}
+          MAX_PAGINAS: ${{ github.event.inputs.max_paginas }}
+        run: |
+          args=()
+          if [ -n "$VANAF" ]; then args+=(--vanaf "$VANAF"); fi
+          if [ -n "$MAX_PAGINAS" ]; then args+=(--max-paginas "$MAX_PAGINAS"); fi
+          python pipeline/sync_stemmingen.py "${args[@]}"
+
+      - name: Wijzigingen opslaan
+        if: always()
+        run: |
+          git config user.name "stemmingen-sync"
+          git config user.email "actions@users.noreply.github.com"
+          mkdir -p data && git add data
+          # Alleen committen als er echt besluiten zijn gewijzigd, niet alleen het tijdstip van de run.
+          if git diff --cached --quiet -- data/besluiten; then
+            echo "Geen nieuwe of gewijzigde stemmingen."
+          else
+            git commit -m "Stemmingen bijgewerkt ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git push
+          fi
