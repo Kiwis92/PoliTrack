@@ -9,6 +9,7 @@ on:
     paths:
       - "beloften/**"
       - "beoordelingen/**"
+      - "resultaten/**"
   workflow_dispatch:
     inputs:
       vanaf:
@@ -46,19 +47,36 @@ jobs:
           if [ -n "$MAX_PAGINAS" ]; then args+=(--max-paginas "$MAX_PAGINAS"); fi
           python pipeline/sync_stemmingen.py "${args[@]}"
 
-      - name: Stemmingen koppelen aan beloften en scores berekenen
+      - name: Stemmingen koppelen aan beloften
         run: python pipeline/verwerk_beloften.py
+
+      - name: AI-codering van nieuwe kandidaten
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AI_MODEL: ${{ vars.AI_MODEL }}
+        run: python pipeline/suggesties.py codering
+
+      - name: Scores berekenen
+        run: python pipeline/verwerk_beloften.py
+
+      - name: Resultaatsuggesties
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AI_MODEL: ${{ vars.AI_MODEL }}
+        run: python pipeline/suggesties.py resultaat
 
       - name: Wijzigingen opslaan
         if: always()
         run: |
           git config user.name "stemmingen-sync"
           git config user.email "actions@users.noreply.github.com"
-          mkdir -p data && git add data
+          mkdir -p data beoordelingen && git add data beoordelingen
           # Alleen committen als er echt iets is gewijzigd, niet alleen het tijdstip van de run.
-          if git diff --cached --quiet -- data ':!data/sync_state.json'; then
+          if git diff --cached --quiet -- data beoordelingen ':!data/sync_state.json'; then
             echo "Geen nieuwe of gewijzigde stemmingen of scores."
           else
             git commit -m "Stemmingen en scores bijgewerkt ($(date -u +%Y-%m-%dT%H:%MZ))"
+            # Iemand kan intussen via het beoordelingsscherm iets hebben opgeslagen.
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
             git push
           fi

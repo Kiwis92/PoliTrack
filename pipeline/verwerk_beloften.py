@@ -5,14 +5,23 @@ Invoer
 ------
 beloften/<id>.json        Vooraf vastgelegde belofte: zoektermen, dossiers, periode.
                           Bestanden die met een underscore beginnen worden overgeslagen.
-beoordelingen/<id>.json   Menselijke beslissingen per stemming (opname, richting, ...).
+beoordelingen/<id>/codering-<naam>.json
+                          Onafhankelijke codering per codeur ("ai" of een GitHub-naam).
+beoordelingen/<id>/beslissingen.json
+                          Eindbeslissing bij stemmingen waar de codeurs verschillen.
+resultaten/<id>.json      Geaccordeerd resultaatoordeel (is de belofte gerealiseerd).
 data/besluiten/           Opgehaalde stemmingen (zie sync_stemmingen.py).
 
 Uitvoer (wordt elke run opnieuw gemaakt, niet met de hand aanpassen)
 ------
 data/kandidaten/<id>.json   Het zoekuniversum: alle stemmingen die mechanisch matchen.
-data/scores/<id>.json       Inzetscore volgens methode v2, voor zover beoordeeld.
+data/scores/<id>.json       Inzetscore volgens methode v2, plus het resultaatoordeel.
 data/beoordelingsrij.json   Overzicht: hoeveel kandidaten per belofte nog wachten.
+data/betrouwbaarheid.json   Overeenstemming tussen codeurs (Cohen's kappa).
+
+Dubbele codering: een stemming telt pas mee als minstens twee codeurs haar
+onafhankelijk hebben gecodeerd. Zijn ze het eens over opname en richting, dan
+is dat de uitkomst. Verschillen ze, dan is een beslissing nodig.
 
 De selectie is mechanisch: een stemming is kandidaat als de zaak een wet,
 amendement of motie is, de stemdatum in de periode valt, en een zoekterm in
@@ -29,6 +38,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 BELOFTEN = ROOT / "beloften"
 BEOORDELINGEN = ROOT / "beoordelingen"
+RESULTATEN = ROOT / "resultaten"
 DATA = ROOT / "data"
 
 # Zaaksoort uit de API -> type in de methode
@@ -45,6 +55,8 @@ MIN_BEWIJS = 3.0
 BANDEN = [(0.80, "Consistent"), (0.60, "Overwegend consistent"), (0.40, "Gemengd"), (0.0, "Strijdig")]
 REDEN_CODES = {"U1", "U2", "U3", "U4"}
 RICHTINGEN = {"voor_belofte", "tegen_belofte"}
+RESULTAAT_WAARDE = {"gerealiseerd": 1.0, "deels_gerealiseerd": 0.5, "niet_gerealiseerd": 0.0}
+RESULTAAT_OVERIG = {"loopt_nog", "niet_toetsbaar"}
 
 
 def lees_json(pad: Path):
@@ -156,8 +168,109 @@ def reken_inzet(items: list[dict]) -> dict | None:
     }
 
 
+def categorie(codering: dict) -> str | None:
+    """Waar codeurs het over eens moeten zijn: uitsluiten, of de richting."""
+    if codering.get("opname") is False:
+        return "uitsluiten"
+    if codering.get("opname") is True and codering.get("richting_voorstem") in RICHTINGEN:
+        return codering["richting_voorstem"]
+    return None
+
+
+def lees_coderingen(belofte_id: str) -> tuple[dict, dict]:
+    """Geeft ({codeur: {sleutel: codering}}, beslissingen) terug."""
+    map_ = BEOORDELINGEN / belofte_id
+    coderingen = {}
+    if map_.exists():
+        for pad in sorted(map_.glob("codering-*.json")):
+            inhoud = lees_json(pad)
+            naam = inhoud.get("codeur") or pad.stem.removeprefix("codering-")
+            coderingen[naam] = {
+                k: v for k, v in (inhoud.get("coderingen") or {}).items() if categorie(v)
+            }
+    beslis_pad = map_ / "beslissingen.json"
+    beslissingen = lees_json(beslis_pad) if beslis_pad.exists() else {}
+    return coderingen, {k: v for k, v in beslissingen.items() if not k.startswith("_")}
+
+
+def bepaal_definitief(kandidaten: list[dict], coderingen: dict, beslissingen: dict) -> tuple[dict, dict]:
+    """Past de regel van dubbele codering toe.
+
+    Geeft (definitief, stand) terug. stand telt per status hoeveel kandidaten
+    er zijn: ongecodeerd, een_codering, geschil, definitief."""
+    # Een mens gaat voor bij de details (directheid, toelichting); AI staat achteraan.
+    volgorde = sorted(coderingen, key=lambda n: (n == "ai", n))
+    definitief, stand = {}, {"ongecodeerd": 0, "een_codering": 0, "geschil": 0, "definitief": 0}
+    for k in kandidaten:
+        sleutel = k["sleutel"]
+        gegeven = [coderingen[n][sleutel] for n in volgorde if sleutel in coderingen[n]]
+        if sleutel in beslissingen and categorie(beslissingen[sleutel]):
+            definitief[sleutel] = beslissingen[sleutel]
+            stand["definitief"] += 1
+        elif len(gegeven) < 2:
+            stand["ongecodeerd" if not gegeven else "een_codering"] += 1
+        elif len({categorie(c) for c in gegeven}) == 1:
+            definitief[sleutel] = gegeven[0]
+            stand["definitief"] += 1
+        else:
+            stand["geschil"] += 1
+    return definitief, stand
+
+
+def kappa(paren: list[tuple[str, str]]) -> float | None:
+    """Cohen's kappa over paren (categorie codeur A, categorie codeur B)."""
+    n = len(paren)
+    if n == 0:
+        return None
+    eens = sum(1 for a, b in paren if a == b) / n
+    labels = {x for paar in paren for x in paar}
+    kans = sum(
+        (sum(1 for a, _ in paren if a == l) / n) * (sum(1 for _, b in paren if b == l) / n)
+        for l in labels
+    )
+    if kans == 1:
+        return 1.0
+    return round((eens - kans) / (1 - kans), 3)
+
+
+def codeurparen(coderingen: dict) -> dict:
+    """Voor elk tweetal codeurs: de paren categorieën op gezamenlijk gecodeerde stemmingen."""
+    namen = sorted(coderingen)
+    uit = {}
+    for i, a in enumerate(namen):
+        for b in namen[i + 1 :]:
+            samen = sorted(set(coderingen[a]) & set(coderingen[b]))
+            if samen:
+                uit[f"{a} / {b}"] = [
+                    (categorie(coderingen[a][s]), categorie(coderingen[b][s])) for s in samen
+                ]
+    return uit
+
+
+def lees_resultaat(belofte_id: str) -> dict:
+    pad = RESULTATEN / f"{belofte_id}.json"
+    if not pad.exists():
+        return {"oordeel": None, "status": "nog niet geaccordeerd"}
+    r = lees_json(pad)
+    oordeel = r.get("oordeel")
+    if oordeel not in RESULTAAT_WAARDE and oordeel not in RESULTAAT_OVERIG:
+        return {"oordeel": None, "status": f"ongeldig oordeel: {oordeel}"}
+    uit = {
+        "oordeel": oordeel,
+        "waarde": RESULTAAT_WAARDE.get(oordeel),
+        "vlaggen": r.get("vlaggen", []),
+        "toelichting": r.get("toelichting"),
+        "bronnen": r.get("bronnen", []),
+        "geaccordeerd_door": r.get("door"),
+        "geaccordeerd_op": r.get("op"),
+        "status": "geaccordeerd",
+    }
+    if oordeel == "niet_gerealiseerd" and not r.get("wederhoor"):
+        uit["status"] = "wacht op wederhoor"
+    return uit
+
+
 def bereken_score(belofte: dict, kandidaten: list[dict], beoordeling: dict) -> dict:
-    per_sleutel = {k["sleutel"]: k for k in kandidaten}
     items, fouten, uitgesloten, open_ = [], [], [], []
     for k in kandidaten:
         oordeel = beoordeling.get(k["sleutel"])
@@ -186,6 +299,10 @@ def bereken_score(belofte: dict, kandidaten: list[dict], beoordeling: dict) -> d
                 "datum": k["datum"],
                 "zaaknummer": k["zaaknummer"],
                 "type": k["type"],
+                "titel": k["titel"],
+                "onderwerp": k["onderwerp"],
+                "besluit": k["besluit"],
+                "richting_voorstem": richting,
                 "cluster": k["cluster"],
                 "c": round(consistent / deelgenomen, 4),
                 "d": d,
@@ -193,10 +310,6 @@ def bereken_score(belofte: dict, kandidaten: list[dict], beoordeling: dict) -> d
                 "coalitiediscipline": bool(oordeel.get("coalitiediscipline")),
             }
         )
-    for sleutel in beoordeling:
-        if sleutel not in per_sleutel:
-            fouten.append(f"{sleutel}: beoordeeld maar geen kandidaat (meer)")
-
     resultaat = {
         "belofte_id": belofte["id"],
         "methode": "v2",
@@ -244,6 +357,8 @@ def main() -> int:
     state_pad = DATA / "sync_state.json"
     peildatum = lees_json(state_pad).get("watermerk") if state_pad.exists() else None
     rij, fout_gevonden = [], False
+    alle_paren = defaultdict(list)
+    betrouwbaarheid = {"streefwaarde_kappa": 0.7, "per_belofte": {}}
     for pad in sorted(BELOFTEN.glob("*.json")):
         if pad.name.startswith("_"):
             continue
@@ -274,9 +389,17 @@ def main() -> int:
                 "kandidaten": kandidaten,
             },
         )
-        beoordeling_pad = BEOORDELINGEN / f"{belofte['id']}.json"
-        beoordeling = lees_json(beoordeling_pad) if beoordeling_pad.exists() else {}
-        score = bereken_score(belofte, kandidaten, beoordeling)
+        coderingen, beslissingen = lees_coderingen(belofte["id"])
+        definitief, stand = bepaal_definitief(kandidaten, coderingen, beslissingen)
+        score = bereken_score(belofte, kandidaten, definitief)
+        score["codering"] = {"codeurs": sorted(coderingen), **stand}
+        score["resultaat"] = lees_resultaat(belofte["id"])
+        paren = codeurparen(coderingen)
+        for naam, p in paren.items():
+            alle_paren[naam].extend(p)
+        betrouwbaarheid["per_belofte"][belofte["id"]] = {
+            naam: {"n": len(p), "kappa": kappa(p)} for naam, p in paren.items()
+        }
         schrijf_json(DATA / "scores" / f"{belofte['id']}.json", score)
         for f in score["fouten"]:
             print(f"LET OP {belofte['id']}: {f}")
@@ -285,11 +408,20 @@ def main() -> int:
                 "belofte_id": belofte["id"],
                 "partij": belofte["partij"],
                 "kandidaten": len(kandidaten),
-                "nog_te_beoordelen": score["nog_te_beoordelen"],
+                **stand,
                 "inzet": score["inzet"].get("oordeel"),
+                "resultaat": score["resultaat"]["oordeel"],
+                "resultaat_status": score["resultaat"]["status"],
             }
         )
-        print(f"{belofte['id']}: {len(kandidaten)} kandidaten, {score['nog_te_beoordelen']} te beoordelen")
+        print(
+            f"{belofte['id']}: {len(kandidaten)} kandidaten, {stand['definitief']} definitief, "
+            f"{stand['geschil']} geschil, {stand['een_codering'] + stand['ongecodeerd']} te coderen"
+        )
+    betrouwbaarheid["totaal"] = {
+        naam: {"n": len(p), "kappa": kappa(p)} for naam, p in sorted(alle_paren.items())
+    }
+    schrijf_json(DATA / "betrouwbaarheid.json", betrouwbaarheid)
     schrijf_json(DATA / "beoordelingsrij.json", rij)
     return 1 if fout_gevonden else 0
 
