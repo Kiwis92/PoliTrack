@@ -1,0 +1,59 @@
+{
+ "id": "pvv-2023-asiel-009",
+ "belofte": "Tijdelijke asielvergunningen van Syriërs intrekken",
+ "partij": "PVV",
+ "fracties": [],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "Tijdelijke asielvergunningen van Syriërs worden ingetrokken want delen van Syrië zijn veilig",
+ "bron": "PVV, Nederlanders weer op 1. Verkiezingsprogramma 2023, hoofdstuk Asiel en immigratie",
+ "bron_url": "https://dnpprepo.ub.rug.nl/87730/1/PVV%20Verkiezingsprogramma%202023.pdf",
+ "pagina": 8,
+ "doel": "Verblijfsvergunningen asiel voor bepaalde tijd van Syriërs worden ingetrokken omdat (delen van) Syrië als veilig worden aangemerkt.",
+ "richting": "Een stem vóór het intrekken of herbeoordelen van Syrische asielvergunningen, of vóór het aanmerken van (delen van) Syrië als veilig, is in lijn met de belofte.",
+ "kernelementen": [
+  "Beleidsbesluit: (delen van) Syrië veilig",
+  "Herbeoordeling of intrekking van tijdelijke vergunningen van Syriërs"
+ ],
+ "horizon": "2025-11-11",
+ "concreetheid": "hoog",
+ "type": "anders",
+ "toetsbaar": true,
+ "zoektermen": [
+  "syriërs",
+  "syrische",
+  "syrië",
+  "landenbeleid syrië",
+  "besluit- en vertrekmoratorium"
+ ],
+ "dossiers": [],
+ "periode_van": "2023-12-06",
+ "periode_tot": "2025-11-11",
+ "formatie_uitkomst": null,
+ "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
+ "opmerking_redactie": "Na de val van Assad (december 2024) is dit onderwerp vaak in stemming geweest. Zoektermen vangen ook buitenlandbeleid over Syrië; uitsluiten met U3.",
+ "status": "concept",
+ "rechtsstatelijke_toets": {
+  "oordeel": "spanning",
+  "grondslag": "Een asielvergunning kan volgens de EU-Kwalificatierichtlijn alleen worden ingetrokken na een 'voldoende ingrijpende en niet-voorbijgaande' verandering in het land van herkomst, en altijd na een individuele beoordeling. De Raad van State bevestigde in 2024 en 2025 dat voor Syriërs steeds een individuele beoordeling van het risico nodig is. Het kabinet paste in 2025 het landenbeleid voor Syrië aan en liet de vrees 'in de standaard individuele beoordeling' toetsen. Collectieve intrekking is dus niet mogelijk; herbeoordeling per persoon wel.",
+  "label_publiek": "Alleen mogelijk per individuele beoordeling, niet als collectieve maatregel. EU-recht eist een duurzame verbetering in Syrië en een toets per persoon.",
+  "bronnen": [
+   {
+    "titel": "Raad van State, uitspraak 21 januari 2025 over teruggekeerde Syriërs (ECLI:NL:RVS:2025:176)",
+    "url": "https://www.raadvanstate.nl/@148034/202404056-1-v2/"
+   },
+   {
+    "titel": "Raad van State, uitspraak over individuele beoordeling Syriërs (202305929/1/V2, verwijzend naar ECLI:NL:RVS:2024:3175)",
+    "url": "https://www.raadvanstate.nl/@145709/202305929-1-v2/"
+   },
+   {
+    "titel": "Brief minister van Asiel en Migratie over het landenbeleid Syrië (Kamerstuk 19637, nr. 3435)",
+    "url": "https://zoek.officielebekendmakingen.nl/kst-19637-3435.pdf"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
+}

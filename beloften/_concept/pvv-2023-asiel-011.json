@@ -1,0 +1,61 @@
+{
+ "id": "pvv-2023-asiel-011",
+ "belofte": "Islamitische scholen, korans en moskeeën verbieden",
+ "partij": "PVV",
+ "fracties": [],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "Nederland is geen islamitisch land: geen islamitische scholen, korans en moskeeën",
+ "bron": "PVV, Nederlanders weer op 1. Verkiezingsprogramma 2023, hoofdstuk Asiel en immigratie",
+ "bron_url": "https://dnpprepo.ub.rug.nl/87730/1/PVV%20Verkiezingsprogramma%202023.pdf",
+ "pagina": 8,
+ "doel": "Een verbod op islamitische scholen, op de koran en op moskeeën in Nederland.",
+ "richting": "Een stem vóór het sluiten of verbieden van islamitische scholen of moskeeën, of vóór een verbod op de koran, is in lijn met de belofte; een stem vóór bescherming of gelijke behandeling van islamitische instellingen gaat ertegen in.",
+ "kernelementen": [
+  "Verbod op islamitische scholen",
+  "Verbod op de koran",
+  "Verbod op moskeeën"
+ ],
+ "horizon": "2025-11-11",
+ "concreetheid": "hoog",
+ "type": "wetgeving_nieuw",
+ "toetsbaar": true,
+ "rechtsstatelijke_toets": {
+  "oordeel": "strijdig_grondwet",
+  "grondslag": "Art. 6 Grondwet (vrijheid van godsdienst), art. 23 Grondwet (vrijheid van onderwijs), art. 1 (gelijke behandeling) en art. 7 (vrijheid van meningsuiting); daarnaast art. 9 en 14 EVRM. De Raad van State adviseerde in 2019 over het PVV-initiatiefvoorstel 'verbod bepaalde islamitische uitingen' (moskeeën, scholen, koran) dat het een hele bevolkingsgroep op discriminatoire wijze fundamentele vrijheidsrechten ontneemt en in strijd is met de Grondwet en internationale verdragen.",
+  "label_publiek": "In strijd met de Grondwet. Dit kan alleen na een grondwetswijziging, die een tweederdemeerderheid in beide Kamers in twee lezingen vereist.",
+  "bronnen": [
+   {
+    "titel": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, nov./dec. 2023",
+    "url": "https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf"
+   },
+   {
+    "titel": "Raad van State, advies over initiatiefwetsvoorstel verbod bepaalde islamitische uitingen (W04.18.0295)",
+    "url": "https://www.raadvanstate.nl/adviezen/@115257/w04-18-0295/"
+   },
+   {
+    "titel": "NOS Nieuwsuur, Hoe terecht zijn zorgen over de grondwet?, december 2023",
+    "url": "https://nos.nl/nieuwsuur/artikel/2501511-hoe-terecht-zijn-zorgen-over-de-grondwet-we-moeten-af-van-nonchalance"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen.",
+ "zoektermen": [
+  "moskee",
+  "moskeeën",
+  "koran",
+  "islamitische scholen",
+  "islamitisch onderwijs",
+  "islamitische school"
+ ],
+ "dossiers": [],
+ "periode_van": "2023-12-06",
+ "periode_tot": "2025-11-11",
+ "formatie_uitkomst": null,
+ "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
+ "opmerking_redactie": "Op verzoek van de redactie opgenomen ondanks strijdigheid met de Grondwet: de kiezer moet zien dat dit beloofd is en dat het niet kan. In de score telt de belofte gewoon mee; het label maakt de juridische status zichtbaar.",
+ "status": "concept"
+}

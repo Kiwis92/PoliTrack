@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Beoordelingsscherm · Beloofd &amp; Gedaan</title>
+<style>
+  :root {
+    --ink: #111; --mid: #555; --line: #d4d4d4; --soft: #f4f4f4; --paper: #fff;
+    --ok: #1f7a3d; --warn: #a66a00; --bad: #b3261e; --open: #2b5fa8;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: var(--paper); }
+  header { border-bottom: 2px solid var(--ink); padding: 14px 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+  header h1 { font-size: 18px; margin: 0; }
+  main { max-width: 980px; margin: 0 auto; padding: 20px; }
+  h2 { font-size: 20px; margin: 24px 0 8px; }
+  h3 { font-size: 16px; margin: 16px 0 6px; }
+  p { margin: 6px 0; }
+  .muted { color: var(--mid); font-size: 14px; }
+  button, select, input, textarea { font: inherit; color: inherit; }
+  button { border: 1px solid var(--ink); background: var(--paper); padding: 7px 14px; cursor: pointer; border-radius: 3px; }
+  button.primary { background: var(--ink); color: var(--paper); }
+  button:disabled { opacity: .4; cursor: default; }
+  button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid var(--open); outline-offset: 1px; }
+  input[type=text], input[type=password], input[type=url], select, textarea { border: 1px solid var(--mid); padding: 7px 9px; border-radius: 3px; background: var(--paper); width: 100%; }
+  textarea { min-height: 70px; }
+  label { display: block; font-size: 14px; font-weight: 600; margin: 12px 0 4px; }
+  label.inline { display: inline-flex; gap: 6px; align-items: center; font-weight: 400; margin: 4px 16px 4px 0; font-size: 15px; }
+  .card { border: 1px solid var(--line); border-radius: 4px; padding: 16px; margin: 12px 0; }
+  .card.spec { background: var(--soft); }
+  nav.tabs { display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 1px solid var(--ink); margin-top: 18px; }
+  nav.tabs button { border-bottom: none; border-radius: 3px 3px 0 0; }
+  nav.tabs button[aria-selected=true] { background: var(--ink); color: var(--paper); }
+  .tag { display: inline-block; border: 1px solid var(--mid); border-radius: 3px; padding: 0 7px; font-size: 13px; margin-right: 6px; }
+  .st-ok { color: var(--ok); border-color: var(--ok); }
+  .st-warn { color: var(--warn); border-color: var(--warn); }
+  .st-bad { color: var(--bad); border-color: var(--bad); }
+  .st-open { color: var(--open); border-color: var(--open); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .bar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0; }
+  #melding { position: sticky; top: 0; padding: 8px 20px; display: none; z-index: 2; color: var(--paper); }
+  #melding.fout { display: block; background: var(--bad); }
+  #melding.goed { display: block; background: var(--ok); }
+  .twee { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .twee { grid-template-columns: 1fr; } }
+  dl { margin: 0; } dt { font-size: 13px; color: var(--mid); margin-top: 8px; } dd { margin: 0; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<div id="melding" role="status" aria-live="polite"></div>
+<header>
+  <h1>Beoordelingsscherm · Beloofd &amp; Gedaan</h1>
+  <div id="wie" class="muted"></div>
+</header>
+<main>
+  <section id="inlog" class="card">
+    <h2 style="margin-top:0">Inloggen</h2>
+    <p>Dit scherm leest en schrijft rechtstreeks in de GitHub-repo. Elke beslissing wordt daar opgeslagen met je naam en het tijdstip.</p>
+    <p class="muted">Je hebt een persoonlijke toegangscode van GitHub nodig (een "fine-grained personal access token") met voor deze repo de rechten <em>Contents: Read and write</em>. De code blijft alleen in dit browsertabblad en verdwijnt als je het sluit.</p>
+    <div class="twee">
+      <div><label for="repo">Repo (eigenaar/naam)</label><input type="text" id="repo" autocomplete="off"></div>
+      <div><label for="tak">Tak</label><input type="text" id="tak" value="master" autocomplete="off"></div>
+    </div>
+    <label for="token">Toegangscode</label>
+    <input type="password" id="token" autocomplete="off">
+    <div class="bar"><button class="primary" id="login">Inloggen</button></div>
+  </section>
+
+  <section id="app" hidden>
+    <label for="belofte">Belofte</label>
+    <select id="belofte"></select>
+    <div id="spec" class="card spec"></div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="coderen" aria-selected="true">Coderen</button>
+      <button role="tab" data-tab="verschillen" aria-selected="false">Verschillen</button>
+      <button role="tab" data-tab="resultaat" aria-selected="false">Resultaat</button>
+      <button role="tab" data-tab="overzicht" aria-selected="false">Overzicht</button>
+    </nav>
+    <div id="paneel"></div>
+  </section>
+</main>
+
+<script>
+"use strict";
+// ---------- kleine hulpjes ----------
+const $ = (id) => document.getElementById(id);
+function el(tag, attrs, ...kinderen) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (k === "class") e.className = v;
+    else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+    else if (v === true) e.setAttribute(k, "");
+    else if (v !== false && v != null) e.setAttribute(k, v);
+  }
+  for (const k of kinderen.flat()) if (k != null) e.append(k.nodeType ? k : document.createTextNode(String(k)));
+  return e;
+}
+function meld(tekst, soort) {
+  const m = $("melding"); m.textContent = tekst; m.className = soort || "";
+  if (soort === "goed") setTimeout(() => { if (m.textContent === tekst) m.className = ""; }, 4000);
+}
+const REDENEN = { U1: "U1 · procedureel", U2: "U2 · vervangen door gewijzigde versie", U3: "U3 · richting niet codeerbaar", U4: "U4 · belofte is bijzaak in pakket" };
+const RICHTING = { voor_belofte: "Stem vóór de zaak = vóór de belofte", tegen_belofte: "Stem vóór de zaak = tegen de belofte" };
+const OORDELEN = { gerealiseerd: "Gerealiseerd", deels_gerealiseerd: "Deels gerealiseerd", niet_gerealiseerd: "Niet gerealiseerd", loopt_nog: "Loopt nog", niet_toetsbaar: "Niet toetsbaar" };
+const VLAGGEN = { in_gang: "In gang (wetstraject loopt)", zonder_steun_partij: "Gerealiseerd zonder steun van de partij", externe_omstandigheid: "Externe omstandigheid" };
+function categorie(c) {
+  if (!c) return null;
+  if (c.opname === false) return "uitsluiten";
+  if (c.opname === true && (c.richting_voorstem === "voor_belofte" || c.richting_voorstem === "tegen_belofte")) return c.richting_voorstem;
+  return null;
+}
+function beschrijf(c) {
+  if (!c) return "geen codering";
+  if (c.opname === false) return "Uitsluiten (" + (c.reden_code || "geen code") + ")";
+  return "Opnemen · " + (RICHTING[c.richting_voorstem] || "?") + " · directheid " + (c.directheid ?? 1) + (c.onderzoeksmotie ? " · onderzoeksmotie" : "");
+}
+
+// ---------- GitHub ----------
+const S = { token: null, repo: null, tak: "master", ik: null, belofte: null, tab: "coderen", data: null, wacht: {}, wachtBeslis: {} };
+async function gh(pad, opties) {
+  const r = await fetch("https://api.github.com" + pad, {
+    ...opties,
+    headers: { Authorization: "Bearer " + S.token, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", ...(opties && opties.headers) },
+  });
+  return r;
+}
+const inhoudPad = (pad) => "/repos/" + S.repo + "/contents/" + pad.split("/").map(encodeURIComponent).join("/");
+async function leesJson(pad, standaard) {
+  const r = await gh(inhoudPad(pad) + "?ref=" + encodeURIComponent(S.tak), { headers: { Accept: "application/vnd.github.raw+json" }, cache: "no-store" });
+  if (r.status === 404) return standaard;
+  if (!r.ok) throw new Error("Lezen van " + pad + " mislukt (" + r.status + ")");
+  return JSON.parse(await r.text());
+}
+async function lijst(pad) {
+  const r = await gh(inhoudPad(pad) + "?ref=" + encodeURIComponent(S.tak), { cache: "no-store" });
+  if (r.status === 404) return [];
+  if (!r.ok) throw new Error("Lezen van map " + pad + " mislukt (" + r.status + ")");
+  return await r.json();
+}
+function naarBase64(tekst) {
+  const bytes = new TextEncoder().encode(tekst); let s = "";
+  for (const b of bytes) s += String.fromCharCode(b);
+  return btoa(s);
+}
+// Leest de nieuwste versie, laat `wijzig` die aanpassen en schrijft terug. Zo gaat werk van een ander niet verloren.
+async function werkBij(pad, standaard, wijzig, bericht) {
+  for (let poging = 0; poging < 3; poging++) {
+    const r = await gh(inhoudPad(pad) + "?ref=" + encodeURIComponent(S.tak), { cache: "no-store" });
+    let sha, huidig = standaard;
+    if (r.ok) {
+      const j = await r.json(); sha = j.sha;
+      const bin = atob(j.content.replace(/\n/g, ""));
+      huidig = JSON.parse(new TextDecoder().decode(Uint8Array.from(bin, (c) => c.charCodeAt(0))));
+    } else if (r.status !== 404) throw new Error("Lezen van " + pad + " mislukt (" + r.status + ")");
+    const nieuw = wijzig(huidig);
+    const w = await gh(inhoudPad(pad), { method: "PUT", body: JSON.stringify({ message: bericht, content: naarBase64(JSON.stringify(nieuw, null, 1) + "\n"), branch: S.tak, sha }) });
+    if (w.ok) return nieuw;
+    if (w.status !== 409 && w.status !== 422) throw new Error("Opslaan van " + pad + " mislukt (" + w.status + "). Heeft je toegangscode schrijfrechten?");
+  }
+  throw new Error("Opslaan van " + pad + " mislukt: het bestand werd steeds tegelijk door iemand anders gewijzigd.");
+}
+
+// ---------- inloggen ----------
+(function vulRepo() {
+  const m = location.hostname.match(/^([^.]+)\.github\.io$/); const deel = location.pathname.split("/").filter(Boolean)[0];
+  $("repo").value = m && deel ? m[1] + "/" + deel : "Kiwis92/PoliTrack";
+})();
+$("login").addEventListener("click", async () => {
+  S.token = $("token").value.trim(); S.repo = $("repo").value.trim(); S.tak = $("tak").value.trim() || "master";
+  if (!S.token || !/^[\w.-]+\/[\w.-]+$/.test(S.repo)) return meld("Vul de repo en je toegangscode in.", "fout");
+  try {
+    const r = await gh("/user");
+    if (!r.ok) throw new Error("De toegangscode is niet geldig (" + r.status + ").");
+    S.ik = (await r.json()).login;
+    const beloften = (await lijst("beloften")).filter((f) => f.name.endsWith(".json") && !f.name.startsWith("_"));
+    $("token").value = "";
+    $("wie").textContent = "Ingelogd als " + S.ik + " · " + S.repo;
+    $("inlog").hidden = true; $("app").hidden = false;
+    const sel = $("belofte"); sel.replaceChildren();
+    for (const f of beloften) sel.append(el("option", { value: f.name.slice(0, -5) }, f.name.slice(0, -5)));
+    if (!beloften.length) { $("spec").textContent = "Er staan nog geen beloften in de map beloften/."; return; }
+    meld("", ""); await kiesBelofte(sel.value);
+  } catch (e) { meld(e.message, "fout"); }
+});
+$("belofte").addEventListener("change", (e) => {
+  if (aantalWacht() && !confirm("Je hebt niet-opgeslagen beslissingen. Toch wisselen?")) { e.target.value = S.belofte; return; }
+  kiesBelofte(e.target.value).catch((f) => meld(f.message, "fout"));
+});
+for (const b of document.querySelectorAll("nav.tabs button")) b.addEventListener("click", () => { S.tab = b.dataset.tab; teken(); });
+window.addEventListener("beforeunload", (e) => { if (aantalWacht()) e.preventDefault(); });
+const aantalWacht = () => Object.keys(S.wacht).length + Object.keys(S.wachtBeslis).length;
+
+// ---------- data van één belofte ----------
+async function kiesBelofte(id) {
+  S.belofte = id; S.wacht = {}; S.wachtBeslis = {};
+  $("paneel").textContent = "Laden…";
+  const map = "beoordelingen/" + id;
+  const [belofte, kand, score, sugg, resultaat, bestanden, rij, betrouwbaarheid] = await Promise.all([
+    leesJson("beloften/" + id + ".json", {}), leesJson("data/kandidaten/" + id + ".json", { kandidaten: [], selectie: {} }),
+    leesJson("data/scores/" + id + ".json", null), leesJson("data/resultaat_suggesties/" + id + ".json", null),
+    leesJson("resultaten/" + id + ".json", null), lijst(map), leesJson("data/beoordelingsrij.json", []), leesJson("data/betrouwbaarheid.json", null),
+  ]);
+  const coderingen = {};
+  await Promise.all(bestanden.filter((f) => /^codering-.+\.json$/.test(f.name)).map(async (f) => {
+    const j = await leesJson(map + "/" + f.name, {}); coderingen[j.codeur || f.name.slice(9, -5)] = j.coderingen || {};
+  }));
+  const beslissingen = await leesJson(map + "/beslissingen.json", {});
+  S.data = { belofte, kandidaten: kand.kandidaten || [], selectie: kand.selectie || {}, score, sugg, resultaat, coderingen, beslissingen, rij, betrouwbaarheid };
+  tekenSpec(); teken();
+}
+function tekenSpec() {
+  const b = S.data.belofte, s = $("spec"); s.replaceChildren();
+  s.append(el("strong", {}, (b.partij || "") + " · " + (b.verkiezingsjaar || "")),
+    el("dl", {},
+      el("dt", {}, "Citaat"), el("dd", {}, b.citaat ? "“" + b.citaat + "”" : "—"),
+      el("dt", {}, "Doel"), el("dd", {}, b.doel || "—"),
+      el("dt", {}, "Richting"), el("dd", {}, b.richting || "—"),
+      el("dt", {}, "Kernelementen"), el("dd", {}, (b.kernelementen || []).join(" · ") || "—"),
+      el("dt", {}, "Horizon"), el("dd", {}, b.horizon || "—"),
+      el("dt", {}, "Rechtsstatelijke toets"), el("dd", {}, toetsRegel(b.rechtsstatelijke_toets))));
+}
+const TOETS = { strijdig_grondwet: ["In strijd met de Grondwet", "st-bad"], strijdig_verdrag_of_eu: ["In strijd met verdragen of EU-recht", "st-bad"], spanning: ["Juridisch omstreden", "st-warn"], geen_bezwaar: ["Geen juridisch bezwaar", "st-ok"], nog_niet_getoetst: ["Nog niet getoetst", "st-open"] };
+function toetsRegel(t) {
+  const [tekst, kleur] = TOETS[(t && t.oordeel) || "nog_niet_getoetst"] || TOETS.nog_niet_getoetst;
+  const bronnen = (t && t.bronnen) || [];
+  return el("span", {}, el("span", { class: "tag " + kleur }, tekst), t && t.label_publiek ? " " + t.label_publiek : "",
+    bronnen.length ? el("span", { class: "muted" }, " · ", ...bronnen.flatMap((b, i) => [i ? ", " : "", el("a", { href: b.url, target: "_blank", rel: "noopener" }, "bron " + (i + 1))])) : "");
+}
+function teken() {
+  for (const b of document.querySelectorAll("nav.tabs button")) b.setAttribute("aria-selected", String(b.dataset.tab === S.tab));
+  const p = $("paneel"); p.replaceChildren();
+  ({ coderen: tekenCoderen, verschillen: tekenVerschillen, resultaat: tekenResultaat, overzicht: tekenOverzicht })[S.tab](p);
+}
+function kaartKandidaat(k) {
+  return [
+    el("p", {}, el("span", { class: "tag" }, k.type), el("span", { class: "tag" }, k.datum), el("span", { class: "tag" }, k.zaaknummer || "")),
+    el("p", {}, el("strong", {}, k.onderwerp || k.titel || "")),
+    el("p", { class: "muted" }, k.titel || ""),
+    el("p", { class: "muted" }, el("a", { href: "https://www.tweedekamer.nl/zoeken?qry=" + encodeURIComponent(k.zaaknummer || ""), target: "_blank", rel: "noopener" }, "Zoek deze zaak op tweedekamer.nl")),
+  ];
+}
+// Formulier voor één codering. `start` vult de velden vooraf in.
+function coderFormulier(start, opKlaar, knopTekst) {
+  const naam = "r" + Math.random().toString(36).slice(2);
+  const f = el("form", {});
+  const keuze = (waarde, tekst) => el("label", { class: "inline" }, el("input", { type: "radio", name: naam + "opname", value: waarde, checked: start && String(start.opname) === waarde }), tekst);
+  const richting = el("select", {}, el("option", { value: "" }, "Kies…"), ...Object.entries(RICHTING).map(([v, t]) => el("option", { value: v, selected: start && start.richting_voorstem === v }, t)));
+  const direct = el("select", {}, el("option", { value: "1" }, "1 · kern van de belofte"), el("option", { value: "0.5", selected: start && start.directheid === 0.5 }, "0,5 · deelaspect of pakket"));
+  const onderzoek = el("input", { type: "checkbox", checked: !!(start && start.onderzoeksmotie) });
+  const discipline = el("input", { type: "checkbox", checked: !!(start && start.coalitiediscipline) });
+  const reden = el("select", {}, el("option", { value: "" }, "Kies…"), ...Object.entries(REDENEN).map(([v, t]) => el("option", { value: v, selected: start && start.reden_code === v }, t)));
+  const toel = el("textarea", {}, (start && start.toelichting) || "");
+  const opnemen = el("div", {}, el("label", {}, "Richting"), richting, el("label", {}, "Directheid"), direct,
+    el("div", { style: "margin-top:10px" }, el("label", { class: "inline" }, onderzoek, "Motie vraagt alleen om onderzoek of een brief"), el("label", { class: "inline" }, discipline, "Stem onder coalitiediscipline")));
+  const uitsluiten = el("div", {}, el("label", {}, "Reden-code"), reden);
+  const toon = () => { const v = new FormData(f).get(naam + "opname"); opnemen.hidden = v !== "true"; uitsluiten.hidden = v !== "false"; };
+  f.append(el("div", {}, keuze("true", "Opnemen"), keuze("false", "Uitsluiten")), opnemen, uitsluiten, el("label", {}, "Toelichting"), toel,
+    el("div", { class: "bar" }, el("button", { class: "primary", type: "submit" }, knopTekst)));
+  f.addEventListener("change", toon); toon();
+  f.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const v = new FormData(f).get(naam + "opname");
+    if (v === "true") {
+      if (!richting.value) return meld("Kies een richting.", "fout");
+      opKlaar({ opname: true, richting_voorstem: richting.value, directheid: Number(direct.value), onderzoeksmotie: onderzoek.checked, coalitiediscipline: discipline.checked, toelichting: toel.value.trim() });
+    } else if (v === "false") {
+      if (!reden.value) return meld("Kies een reden-code.", "fout");
+      opKlaar({ opname: false, reden_code: reden.value, toelichting: toel.value.trim() });
+    } else meld("Kies opnemen of uitsluiten.", "fout");
+  });
+  return f;
+}
+
+// ---------- tab: coderen (blind) ----------
+function tekenCoderen(p) {
+  const d = S.data, mijn = { ...(d.coderingen[S.ik] || {}), ...S.wacht };
+  const open = d.kandidaten.filter((k) => !mijn[k.sleutel]);
+  p.append(el("div", { class: "bar" },
+    el("span", {}, open.length + " van " + d.kandidaten.length + " stemmingen nog door jou te coderen"),
+    el("button", { class: "primary", disabled: !Object.keys(S.wacht).length, onclick: bewaarCoderingen }, "Opslaan in repo (" + Object.keys(S.wacht).length + ")")));
+  p.append(el("p", { class: "muted" }, "Je codeert blind: de codering van de andere codeur en het stemgedrag van de partij zie je pas bij Verschillen."));
+  if (!open.length) { p.append(el("div", { class: "card" }, "Niets meer te coderen voor deze belofte.")); return; }
+  const k = open[0];
+  p.append(el("div", { class: "card" }, ...kaartKandidaat(k),
+    coderFormulier(null, (c) => { S.wacht[k.sleutel] = { ...c, op: new Date().toISOString() }; meld("", ""); teken(); }, "Vastleggen en volgende")));
+}
+async function bewaarCoderingen() {
+  try {
+    const pad = "beoordelingen/" + S.belofte + "/codering-" + S.ik + ".json", n = Object.keys(S.wacht).length;
+    const nieuw = await werkBij(pad, { codeur: S.ik, coderingen: {} }, (h) => ({ codeur: S.ik, coderingen: { ...(h.coderingen || {}), ...S.wacht } }), "Codering " + S.belofte + " door " + S.ik + " (" + n + ")");
+    S.data.coderingen[S.ik] = nieuw.coderingen; S.wacht = {}; meld(n + " coderingen opgeslagen.", "goed"); teken();
+  } catch (e) { meld(e.message, "fout"); }
+}
+
+// ---------- tab: verschillen ----------
+function geschillen() {
+  const d = S.data, uit = [];
+  for (const k of d.kandidaten) {
+    if (d.beslissingen[k.sleutel] || S.wachtBeslis[k.sleutel]) continue;
+    const gegeven = Object.entries(d.coderingen).filter(([, c]) => categorie(c[k.sleutel]));
+    if (gegeven.length >= 2 && new Set(gegeven.map(([, c]) => categorie(c[k.sleutel]))).size > 1) uit.push({ k, gegeven });
+  }
+  return uit;
+}
+function tekenVerschillen(p) {
+  const lijst_ = geschillen();
+  p.append(el("div", { class: "bar" },
+    el("span", {}, lijst_.length + " stemmingen waar de codeurs verschillen"),
+    el("button", { class: "primary", disabled: !Object.keys(S.wachtBeslis).length, onclick: bewaarBeslissingen }, "Opslaan in repo (" + Object.keys(S.wachtBeslis).length + ")")));
+  if (!lijst_.length) { p.append(el("div", { class: "card" }, "Geen openstaande verschillen.")); return; }
+  const { k, gegeven } = lijst_[0], st = k.partijstem || {};
+  p.append(el("div", { class: "card" }, ...kaartKandidaat(k),
+    el("p", { class: "muted" }, "Stem van de partij: " + (st.voor || 0) + " voor, " + (st.tegen || 0) + " tegen, " + (st.niet_deelgenomen || 0) + " niet deelgenomen · besluit: " + (k.besluit || "—")),
+    el("table", {}, el("thead", {}, el("tr", {}, el("th", {}, "Codeur"), el("th", {}, "Codering"), el("th", {}, "Toelichting"))),
+      el("tbody", {}, ...gegeven.map(([naam, c]) => el("tr", {}, el("td", {}, naam), el("td", {}, beschrijf(c[k.sleutel])), el("td", {}, c[k.sleutel].toelichting || ""))))),
+    el("h3", {}, "Eindbeslissing"),
+    coderFormulier((S.data.coderingen[S.ik] || {})[k.sleutel] || null, (c) => { S.wachtBeslis[k.sleutel] = { ...c, beslist_door: S.ik, op: new Date().toISOString() }; meld("", ""); teken(); }, "Beslissen en volgende")));
+}
+async function bewaarBeslissingen() {
+  try {
+    const n = Object.keys(S.wachtBeslis).length;
+    const nieuw = await werkBij("beoordelingen/" + S.belofte + "/beslissingen.json", {}, (h) => ({ ...h, ...S.wachtBeslis }), "Beslissingen " + S.belofte + " door " + S.ik + " (" + n + ")");
+    S.data.beslissingen = nieuw; S.wachtBeslis = {}; meld(n + " beslissingen opgeslagen.", "goed"); teken();
+  } catch (e) { meld(e.message, "fout"); }
+}
+
+// ---------- tab: resultaat ----------
+function tekenResultaat(p) {
+  const d = S.data, s = d.sugg, r = d.resultaat || {};
+  p.append(el("h2", {}, "Suggestie"));
+  if (!s) p.append(el("div", { class: "card" }, "Nog geen suggestie beschikbaar. Die verschijnt na de eerstvolgende automatische run."));
+  else {
+    p.append(el("div", { class: "card" }, el("h3", { style: "margin-top:0" }, "Vaste regels: " + (OORDELEN[s.regel.oordeel] || s.regel.oordeel)), el("p", {}, s.regel.uitleg),
+      el("p", { class: "muted" }, "Horizon: " + (s.regel.feiten.horizon || "—") + (s.regel.feiten.horizon_verstreken ? " (verstreken)" : "") +
+        " · wetten vóór de belofte aangenomen in TK: " + (s.regel.feiten.wetten_voor_belofte_aangenomen_tk.join(", ") || "geen") +
+        " · wetten tegen: " + (s.regel.feiten.wetten_tegen_belofte_aangenomen_tk.join(", ") || "geen") +
+        " · nog te beoordelen stemmingen: " + s.regel.feiten.nog_te_beoordelen_stemmingen)));
+    if (s.ai) p.append(el("div", { class: "card" }, el("h3", { style: "margin-top:0" }, "AI: " + (OORDELEN[s.ai.oordeel] || s.ai.oordeel)), el("p", {}, s.ai.onderbouwing),
+      (s.ai.per_kernelement || []).length ? el("table", {}, el("tbody", {}, ...s.ai.per_kernelement.map((x) => el("tr", {}, el("td", {}, x.kernelement), el("td", {}, x.stand))))) : null,
+      el("h3", {}, "Zelf nog na te gaan"), el("ul", {}, ...(s.ai.te_controleren || []).map((x) => el("li", {}, x))),
+      el("p", { class: "muted" }, "Gebaseerd op stemmingen in de Tweede Kamer. De AI weet niets over de Eerste Kamer, het Staatsblad of de uitvoering. · " + (s.ai.model || "") + " · " + (s.ai.op || ""))));
+  }
+  p.append(el("h2", {}, "Jouw oordeel"));
+  if (r.oordeel) p.append(el("p", { class: "muted" }, "Laatst vastgelegd: " + (OORDELEN[r.oordeel] || r.oordeel) + " door " + (r.door || "?") + " op " + (r.op || "?")));
+  const voorstel = r.oordeel || (s && s.ai && s.ai.oordeel) || (s && s.regel.oordeel) || "";
+  const oordeel = el("select", {}, el("option", { value: "" }, "Kies…"), ...Object.entries(OORDELEN).map(([v, t]) => el("option", { value: v, selected: voorstel === v }, t)));
+  const vlaggen = Object.entries(VLAGGEN).map(([v, t]) => [v, el("input", { type: "checkbox", checked: (r.vlaggen || []).includes(v) }), t]);
+  const toel = el("textarea", {}, r.toelichting || "");
+  const bronnen = el("textarea", { placeholder: "Eén bron per regel (URL of kamerstuknummer)" }, (r.bronnen || []).join("\n"));
+  const wederhoor = el("input", { type: "checkbox", checked: !!r.wederhoor });
+  p.append(el("div", { class: "card" },
+    el("label", {}, "Oordeel"), oordeel,
+    el("div", { style: "margin-top:10px" }, ...vlaggen.map(([, box, t]) => el("label", { class: "inline" }, box, t))),
+    el("label", {}, "Toelichting in gewone taal"), toel, el("label", {}, "Bronnen"), bronnen,
+    el("div", { style: "margin-top:10px" }, el("label", { class: "inline" }, wederhoor, "Wederhoor is toegepast (verplicht bij Niet gerealiseerd)")),
+    el("div", { class: "bar" }, el("button", { class: "primary", onclick: async () => {
+      if (!oordeel.value) return meld("Kies een oordeel.", "fout");
+      const lijstBronnen = bronnen.value.split("\n").map((x) => x.trim()).filter(Boolean);
+      if (["gerealiseerd", "deels_gerealiseerd", "niet_gerealiseerd"].includes(oordeel.value) && (!toel.value.trim() || !lijstBronnen.length)) return meld("Een definitief oordeel heeft een toelichting en minstens één bron nodig.", "fout");
+      const nieuw = { oordeel: oordeel.value, vlaggen: vlaggen.filter(([, box]) => box.checked).map(([v]) => v), toelichting: toel.value.trim(), bronnen: lijstBronnen, wederhoor: wederhoor.checked, door: S.ik, op: new Date().toISOString() };
+      try { await werkBij("resultaten/" + S.belofte + ".json", {}, () => nieuw, "Resultaatoordeel " + S.belofte + " door " + S.ik); S.data.resultaat = nieuw;
+        meld(nieuw.oordeel === "niet_gerealiseerd" && !nieuw.wederhoor ? "Opgeslagen. Dit oordeel telt pas mee nadat wederhoor is toegepast." : "Resultaatoordeel opgeslagen.", "goed"); teken();
+      } catch (e) { meld(e.message, "fout"); }
+    } }, "Accorderen en opslaan"))));
+}
+
+// ---------- tab: overzicht ----------
+function tekenOverzicht(p) {
+  const d = S.data, sc = d.score;
+  p.append(el("h2", {}, "Deze belofte"));
+  if (!sc) p.append(el("div", { class: "card" }, "Nog geen score berekend."));
+  else {
+    const i = sc.inzet || {}, r = sc.resultaat || {}, c = sc.codering || {};
+    const kleur = { "Consistent": "st-ok", "Overwegend consistent": "st-ok", "Gemengd": "st-warn", "Strijdig": "st-bad" }[i.oordeel] || "st-open";
+    p.append(el("div", { class: "card" },
+      el("p", {}, "Inzet: ", el("span", { class: "tag " + kleur }, i.oordeel || "—"), i.score != null ? i.score.toFixed(2).replace(".", ",") + " (ruw " + i.ruw_consistent + " van " + i.ruw_totaal + ")" : "", " ", ...(i.markeringen || []).map((m) => el("span", { class: "tag st-warn" }, m))),
+      el("p", {}, "Resultaat: ", el("span", { class: "tag " + ({ gerealiseerd: "st-ok", deels_gerealiseerd: "st-warn", niet_gerealiseerd: "st-bad" }[r.oordeel] || "st-open") }, OORDELEN[r.oordeel] || "—"), r.status || ""),
+      el("p", { class: "muted" }, "Codering: " + (c.definitief || 0) + " definitief · " + (c.geschil || 0) + " verschil · " + (c.een_codering || 0) + " met één codering · " + (c.ongecodeerd || 0) + " ongecodeerd · codeurs: " + ((c.codeurs || []).join(", ") || "geen")),
+      el("p", { class: "muted" }, "Selectie: zoektermen " + ((d.selectie.zoektermen || []).join(", ") || "—") + " · dossiers " + ((d.selectie.dossiers || []).join(", ") || "—") + " · peildatum " + (d.selectie.peildatum || "—"))));
+  }
+  p.append(el("h2", {}, "Overeenstemming tussen codeurs"));
+  const b = d.betrouwbaarheid, rijen = b ? Object.entries(b.totaal || {}) : [];
+  p.append(rijen.length ? el("table", {}, el("thead", {}, el("tr", {}, el("th", {}, "Codeurs"), el("th", {}, "Stemmingen"), el("th", {}, "Cohen's kappa"))),
+    el("tbody", {}, ...rijen.map(([n, v]) => el("tr", {}, el("td", {}, n), el("td", {}, v.n), el("td", {}, el("span", { class: "tag " + (v.kappa >= 0.7 ? "st-ok" : "st-warn") }, v.kappa == null ? "—" : String(v.kappa).replace(".", ",")), v.kappa >= 0.7 ? "" : "onder de streefwaarde 0,7")))))
+    : el("div", { class: "card" }, "Nog geen stemmingen die door twee codeurs zijn gecodeerd."));
+  p.append(el("h2", {}, "Alle beloften"));
+  p.append(el("table", {}, el("thead", {}, el("tr", {}, ...["Belofte", "Kandidaten", "Te coderen", "Verschillen", "Inzet", "Resultaat"].map((t) => el("th", {}, t)))),
+    el("tbody", {}, ...(d.rij || []).map((x) => el("tr", {}, el("td", {}, x.belofte_id), el("td", {}, x.kandidaten), el("td", {}, (x.ongecodeerd || 0) + (x.een_codering || 0)), el("td", {}, x.geschil || 0), el("td", {}, x.inzet || "—"), el("td", {}, (OORDELEN[x.resultaat] || "—") + " · " + (x.resultaat_status || "")))))));
+  p.append(el("p", { class: "muted" }, "Scores en tellingen worden bijgewerkt door de automatische taak, een paar minuten nadat je iets hebt opgeslagen."));
+}
+</script>
+</body>
+</html>

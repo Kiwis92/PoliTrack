@@ -1,0 +1,56 @@
+{
+ "id": "pvv-2023-asiel-003",
+ "belofte": "VN-Vluchtelingenverdrag opzeggen",
+ "partij": "PVV",
+ "fracties": [],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "Opt out EU-regelgeving asiel en migratie, opzeggen VN-Vluchtelingenverdrag",
+ "bron": "PVV, Nederlanders weer op 1. Verkiezingsprogramma 2023, hoofdstuk Asiel en immigratie",
+ "bron_url": "https://dnpprepo.ub.rug.nl/87730/1/PVV%20Verkiezingsprogramma%202023.pdf",
+ "pagina": 8,
+ "doel": "Nederland zegt het Vluchtelingenverdrag van 1951 op.",
+ "richting": "Een stem vóór opzegging, herziening of het niet langer toepassen van het Vluchtelingenverdrag is in lijn met de belofte.",
+ "kernelementen": [
+  "Opzegging van het Vluchtelingenverdrag door Nederland"
+ ],
+ "horizon": "2025-11-11",
+ "concreetheid": "hoog",
+ "type": "verdrag",
+ "toetsbaar": true,
+ "zoektermen": [
+  "vluchtelingenverdrag",
+  "vluchtelingenverdrag opzeggen",
+  "verdrag van genève"
+ ],
+ "dossiers": [],
+ "periode_van": "2023-12-06",
+ "periode_tot": "2025-11-11",
+ "formatie_uitkomst": null,
+ "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
+ "opmerking_redactie": "Zelfde citaat als 002; gesplitst omdat het twee los toetsbare acties zijn.",
+ "status": "concept",
+ "rechtsstatelijke_toets": {
+  "oordeel": "geen_bezwaar",
+  "grondslag": "Opzegging van het Vluchtelingenverdrag is juridisch mogelijk (art. 44 van het verdrag), maar verandert weinig: dezelfde verplichtingen volgen uit het EVRM en de EU-Kwalificatierichtlijn, die Nederland blijven binden.",
+  "label_publiek": "Juridisch mogelijk, maar met beperkt effect: het EVRM en het EU-asielrecht leggen dezelfde verplichtingen op.",
+  "bronnen": [
+   {
+    "titel": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, nov./dec. 2023",
+    "url": "https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf"
+   },
+   {
+    "titel": "Fadi Fahad (VU, migratierecht), Hoe juridisch haalbaar zijn asielplannen in partijprogramma's",
+    "url": "https://vu.nl/nl/onderzoek/hoe-juridisch-haalbaar-zijn-asielplannen-in-partijprogramma-s"
+   },
+   {
+    "titel": "Kabinetsreactie op onderzoek naar het Vluchtelingenverdrag (Kamerstuk 19637, nr. 2645)",
+    "url": "https://zoek.officielebekendmakingen.nl/kst-19637-2645.pdf"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
+}

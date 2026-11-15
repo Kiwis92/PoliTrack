@@ -1,0 +1,174 @@
+{
+ "_uitleg": "Welke fractienamen in de Kamerdata bij welke partij horen, en vanaf wanneer. Regels uit het redactiestatuut: een fusie of gezamenlijke lijst erft de beloften van de voorgangers; een afsplitsing erft niets. Handmatig bijgehouden; pipeline/tijdlijn_check.py waarschuwt als de API een fractie kent die hier ontbreekt.",
+ "partijen": {
+  "VVD": {
+   "naam": "Volkspartij voor Vrijheid en Democratie",
+   "fracties": [
+    {
+     "fractie": "VVD"
+    }
+   ]
+  },
+  "D66": {
+   "naam": "Democraten 66",
+   "fracties": [
+    {
+     "fractie": "D66"
+    }
+   ]
+  },
+  "PVV": {
+   "naam": "Partij voor de Vrijheid",
+   "fracties": [
+    {
+     "fractie": "PVV"
+    }
+   ]
+  },
+  "CDA": {
+   "naam": "Christen-Democratisch Appèl",
+   "fracties": [
+    {
+     "fractie": "CDA"
+    }
+   ]
+  },
+  "GL-PvdA": {
+   "naam": "GroenLinks-PvdA, sinds 13 juni 2026 Progressief Nederland (PRO)",
+   "fracties": [
+    {
+     "fractie": "GroenLinks-PvdA",
+     "van": "2023-10-27",
+     "tot": "2026-06-10"
+    },
+    {
+     "fractie": "PRO",
+     "van": "2026-06-09"
+    }
+   ],
+   "opmerking": "Fusie: PRO erft de beloften van de gezamenlijke lijst GroenLinks-PvdA (2023 en 2025). Data volgen de API: GroenLinks-PvdA inactief per 10 juni 2026, PRO actief per 9 juni 2026 (het Presidium liet de naam per 10 juni voeren).",
+   "bronnen": [
+    "https://www.parlement.com/tweede-kamerfractie-progressief-nederland-pro",
+    "https://zoek.officielebekendmakingen.nl/kst-36959-2.pdf"
+   ]
+  },
+  "NSC": {
+   "naam": "Nieuw Sociaal Contract",
+   "fracties": [
+    {
+     "fractie": "Nieuw Sociaal Contract",
+     "van": "2023-12-05",
+     "tot": "2025-11-11"
+    }
+   ]
+  },
+  "BBB": {
+   "naam": "BoerBurgerBeweging",
+   "fracties": [
+    {
+     "fractie": "BBB"
+    }
+   ]
+  },
+  "SP": {
+   "naam": "Socialistische Partij",
+   "fracties": [
+    {
+     "fractie": "SP"
+    }
+   ]
+  },
+  "PvdD": {
+   "naam": "Partij voor de Dieren",
+   "fracties": [
+    {
+     "fractie": "PvdD"
+    }
+   ]
+  },
+  "ChristenUnie": {
+   "naam": "ChristenUnie",
+   "fracties": [
+    {
+     "fractie": "ChristenUnie"
+    }
+   ]
+  },
+  "SGP": {
+   "naam": "Staatkundig Gereformeerde Partij",
+   "fracties": [
+    {
+     "fractie": "SGP"
+    }
+   ]
+  },
+  "DENK": {
+   "naam": "DENK",
+   "fracties": [
+    {
+     "fractie": "DENK"
+    }
+   ]
+  },
+  "FVD": {
+   "naam": "Forum voor Democratie",
+   "fracties": [
+    {
+     "fractie": "FVD"
+    }
+   ]
+  },
+  "JA21": {
+   "naam": "JA21",
+   "fracties": [
+    {
+     "fractie": "JA21"
+    }
+   ]
+  },
+  "Volt": {
+   "naam": "Volt",
+   "fracties": [
+    {
+     "fractie": "Volt"
+    }
+   ]
+  },
+  "50PLUS": {
+   "naam": "50PLUS",
+   "fracties": [
+    {
+     "fractie": "50PLUS"
+    }
+   ]
+  },
+  "Groep Markuszower": {
+   "naam": "Groep Markuszower (sinds 17 april 2026 partij De Nederlandse Alliantie)",
+   "fracties": [
+    {
+     "fractie": "Groep Markuszower",
+     "van": "2026-01-20"
+    }
+   ],
+   "afgesplitst_van": "PVV",
+   "opmerking": "Afsplitsing van zeven PVV-Kamerleden op 20 januari 2026. Erft geen beloften; telt vanaf de afsplitsing niet meer mee voor de PVV.",
+   "bronnen": [
+    "https://parlement.com/afsplitsing-groep-markuszower-2026"
+   ]
+  },
+  "Lid Keijzer": {
+   "naam": "Groep-lid Keijzer",
+   "fracties": [
+    {
+     "fractie": "Lid Keijzer",
+     "van": "2026-02-24"
+    }
+   ],
+   "afgesplitst_van": "BBB",
+   "opmerking": "Afsplitsing van Mona Keijzer van BBB op 23 februari 2026; als fractie geregistreerd per 24 februari 2026. Erft geen beloften.",
+   "bronnen": [
+    "https://www.parlement.com/afsplitsing-groep-lid-keijzer-2026"
+   ]
+  }
+ }
+}

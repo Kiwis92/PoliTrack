@@ -1,0 +1,62 @@
+{
+ "id": "pvv-2023-asiel-002",
+ "belofte": "Opt-out van EU-asielregels bedingen",
+ "partij": "PVV",
+ "fracties": [],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "Opt out EU-regelgeving asiel en migratie, opzeggen VN-Vluchtelingenverdrag",
+ "bron": "PVV, Nederlanders weer op 1. Verkiezingsprogramma 2023, hoofdstuk Asiel en immigratie",
+ "bron_url": "https://dnpprepo.ub.rug.nl/87730/1/PVV%20Verkiezingsprogramma%202023.pdf",
+ "pagina": 8,
+ "doel": "Nederland niet langer gebonden aan de EU-regels voor asiel en migratie.",
+ "richting": "Een stem vóór het aanvragen of bedingen van een opt-out, of tegen de toepassing van EU-asielregels (zoals het Asiel- en Migratiepact), is in lijn met de belofte.",
+ "kernelementen": [
+  "Formeel verzoek aan de EU om een opt-out",
+  "Opt-out daadwerkelijk verkregen"
+ ],
+ "horizon": "2025-11-11",
+ "concreetheid": "hoog",
+ "type": "verdrag",
+ "toetsbaar": true,
+ "zoektermen": [
+  "opt-out",
+  "opt out",
+  "migratiepact",
+  "asiel- en migratiepact",
+  "asielpact",
+  "eu-asiel"
+ ],
+ "dossiers": [
+  "32317"
+ ],
+ "periode_van": "2023-12-06",
+ "periode_tot": "2025-11-11",
+ "formatie_uitkomst": null,
+ "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
+ "opmerking_redactie": "Het citaat bevat twee beloften; de tweede (VN-Vluchtelingenverdrag) staat apart als 003.",
+ "status": "concept",
+ "rechtsstatelijke_toets": {
+  "oordeel": "strijdig_verdrag_of_eu",
+  "grondslag": "De EU-verdragen kennen geen procedure om achteraf een opt-out te krijgen; daarvoor is een verdragswijziging met instemming van alle lidstaten nodig. Het kabinet-Schoof schreef dat zelf aan de Kamer, en de Europese Commissie bevestigde dat de regels bindend blijven.",
+  "label_publiek": "Kan Nederland niet eenzijdig regelen. Een opt-out vereist wijziging van de EU-verdragen met instemming van alle lidstaten.",
+  "bronnen": [
+   {
+    "titel": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, nov./dec. 2023",
+    "url": "https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf"
+   },
+   {
+    "titel": "Brief minister van Asiel en Migratie over de opt-out, 19 september 2024 (Kamerstuk 19637, nr. 3274)",
+    "url": "https://zoek.officielebekendmakingen.nl/kst-19637-3274.html"
+   },
+   {
+    "titel": "NOS, Nederland informeert EU over opt-out-plannen, 18 september 2024",
+    "url": "https://nos.nl/l/2537599"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
+}

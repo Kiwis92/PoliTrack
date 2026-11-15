@@ -1,0 +1,58 @@
+{
+ "id": "pvv-2023-asiel-010",
+ "belofte": "Dubbele nationaliteit verbieden",
+ "partij": "PVV",
+ "fracties": [],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "Verbod dubbele nationaliteit",
+ "bron": "PVV, Nederlanders weer op 1. Verkiezingsprogramma 2023, hoofdstuk Asiel en immigratie",
+ "bron_url": "https://dnpprepo.ub.rug.nl/87730/1/PVV%20Verkiezingsprogramma%202023.pdf",
+ "pagina": 8,
+ "doel": "Nederlanders kunnen niet langer tegelijk een andere nationaliteit bezitten.",
+ "richting": "Een stem vóór beperking van meervoudige nationaliteit (bijv. verplichte afstand bij naturalisatie) is in lijn met de belofte; een stem vóór verruiming gaat ertegen in.",
+ "kernelementen": [
+  "Wijziging Rijkswet op het Nederlanderschap die dubbele nationaliteit verbiedt of de afstandseis aanscherpt"
+ ],
+ "horizon": "2025-11-11",
+ "concreetheid": "hoog",
+ "type": "wetgeving_wijzigen",
+ "toetsbaar": true,
+ "zoektermen": [
+  "dubbele nationaliteit",
+  "meervoudige nationaliteit",
+  "afstandseis",
+  "rijkswet op het nederlanderschap",
+  "naturalisatie"
+ ],
+ "dossiers": [],
+ "periode_van": "2023-12-06",
+ "periode_tot": "2025-11-11",
+ "formatie_uitkomst": null,
+ "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
+ "opmerking_redactie": "Valt in het programma onder asiel en immigratie; thema blijft 'asiel' voor consistentie met het hoofdstuk.",
+ "status": "concept",
+ "rechtsstatelijke_toets": {
+  "oordeel": "strijdig_verdrag_of_eu",
+  "grondslag": "Art. 4 en 17 van het Europees Verdrag inzake nationaliteit (1997) verplichten tot gelijke behandeling van burgers met meer nationaliteiten en verbieden het staatloos maken van personen. De Raad van State was in 2017 kritisch over een initiatiefvoorstel tegen dubbele nationaliteit en oordeelde in 2022 dat het uitsluiten van Nederlanders met een dubbele nationaliteit van rechten discriminatie oplevert en in strijd is met art. 17 EVN. Een algeheel verbod botst bovendien met art. 1 Grondwet.",
+  "label_publiek": "Kan niet zonder opzegging van het Europees Verdrag inzake nationaliteit; een algeheel verbod botst met het gelijkheidsbeginsel.",
+  "bronnen": [
+   {
+    "titel": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, nov./dec. 2023",
+    "url": "https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf"
+   },
+   {
+    "titel": "Raad van State, advies over initiatiefvoorstel beperking meervoudige nationaliteit, 23 februari 2017 (Kamerstuk 34632, nr. 5)",
+    "url": "https://zoek.officielebekendmakingen.nl/kst-34632-5.pdf"
+   },
+   {
+    "titel": "Raad van State, advies over grondwetsvoorstel verbod meervoudige nationaliteit politieke ambtsdragers, 2022",
+    "url": "https://berthub.eu/tkconv/getraw/2022D25640"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
+}

@@ -1,0 +1,61 @@
+{
+ "id": "pvv-2023-asiel-008",
+ "belofte": "Spreidingswet intrekken, geen opvangplicht voor gemeenten",
+ "partij": "PVV",
+ "fracties": [],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "Geen dwangwet: gemeenten nooit verplichten asielzoekers op te vangen",
+ "bron": "PVV, Nederlanders weer op 1. Verkiezingsprogramma 2023, hoofdstuk Asiel en immigratie",
+ "bron_url": "https://dnpprepo.ub.rug.nl/87730/1/PVV%20Verkiezingsprogramma%202023.pdf",
+ "pagina": 8,
+ "doel": "Geen wettelijke plicht voor gemeenten om asielopvang te realiseren; de Spreidingswet (Wet gemeentelijke taak mogelijk maken asielopvangvoorzieningen) wordt ingetrokken.",
+ "richting": "Een stem tégen de Spreidingswet of vóór intrekking ervan is in lijn met de belofte; een stem vóór (uitvoering van) de wet gaat ertegen in.",
+ "kernelementen": [
+  "Intrekking van de Spreidingswet aangenomen door beide Kamers"
+ ],
+ "horizon": "2025-11-11",
+ "concreetheid": "hoog",
+ "type": "wetgeving_intrekken",
+ "toetsbaar": true,
+ "zoektermen": [
+  "spreidingswet",
+  "dwangwet",
+  "gemeentelijke taak mogelijk maken asielopvang",
+  "intrekking van de wet gemeentelijke taak",
+  "asielopvangvoorzieningen"
+ ],
+ "dossiers": [
+  "36333",
+  "36955"
+ ],
+ "periode_van": "2023-12-06",
+ "periode_tot": "2025-11-11",
+ "formatie_uitkomst": null,
+ "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
+ "opmerking_redactie": "De Spreidingswet is in januari 2024 door de Eerste Kamer aangenomen. Het initiatiefwetsvoorstel tot intrekking (36955, Ceulemans c.s.) is ingediend in 2026, dus na de horizon van deze belofte; stemmingen daarover vallen buiten de periode.",
+ "status": "concept",
+ "rechtsstatelijke_toets": {
+  "oordeel": "geen_bezwaar",
+  "grondslag": "Intrekking van een nationale wet is een gewone wetswijziging; er is geen grondwettelijk of verdragsrechtelijk beletsel. De Raad van State had op 8 juli 2026 wel 'ernstige bezwaren' tegen het initiatiefwetsvoorstel tot intrekking (Kamerstuk 36955), omdat intrekking de instroom niet beperkt en de opvangplicht uit nationaal en internationaal recht blijft bestaan. Dat is een beleidsmatig, geen rechtsstatelijk bezwaar.",
+  "label_publiek": "Juridisch mogelijk via een gewone wet. De Raad van State adviseerde in 2026 wel negatief over het intrekkingsvoorstel, om beleidsredenen.",
+  "bronnen": [
+   {
+    "titel": "Raad van State, advies over initiatiefwetsvoorstel intrekking Spreidingswet, 8 juli 2026 (W03.26.00147/II)",
+    "url": "https://www.raadvanstate.nl/@158573/w03-26-00147-ii/"
+   },
+   {
+    "titel": "Universiteit Leiden (Mark Klaassen), Raad van State kritisch op voorstel intrekken Spreidingswet, juli 2026",
+    "url": "https://www.universiteitleiden.nl/in-de-media/2026/07/raad-van-state-kritisch-op-voorstel-intrekken-spreidingswet"
+   },
+   {
+    "titel": "Memorie van toelichting initiatiefwetsvoorstel intrekking Spreidingswet (Kamerstuk 36955, nr. 3)",
+    "url": "https://zoek.officielebekendmakingen.nl/kst-36955-3.html"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
+}

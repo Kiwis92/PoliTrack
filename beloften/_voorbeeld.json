@@ -1,0 +1,42 @@
+{
+ "_uitleg": "Sjabloon. Kopieer naar beloften/<id>.json (zonder underscore) en vul in VOORDAT je stemmingen bekijkt. Bestanden die met een underscore beginnen worden overgeslagen. 'partij' is de sleutel uit tijdlijn/partijen.json; 'fracties' mag leeg blijven, dan volgen de fractienamen uit de tijdlijn (ook bij fusies en naamswijzigingen).",
+ "id": "partij-2023-onderwerp",
+ "partij": "PVV",
+ "fracties": [],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "Letterlijk citaat uit het programma",
+ "bron": "Titel programma, paginanummer, URL",
+ "doel": "Wat er concreet beloofd is",
+ "richting": "Wat een stem in lijn met de belofte inhoudt",
+ "kernelementen": [
+  "Controleerbaar onderdeel 1",
+  "Controleerbaar onderdeel 2"
+ ],
+ "horizon": "2027-12-31",
+ "zoektermen": [
+  "maximaal",
+  "tien",
+  "termen"
+ ],
+ "dossiers": [
+  "36000"
+ ],
+ "periode_van": "2023-12-06",
+ "periode_tot": null,
+ "rechtsstatelijke_toets": {
+  "oordeel": "nog_niet_getoetst",
+  "grondslag": "",
+  "label_publiek": "",
+  "bronnen": [
+   {
+    "titel": "",
+    "url": ""
+   }
+  ],
+  "getoetst_op": null,
+  "getoetst_door": null
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen. Minimaal twee onafhankelijke bronnen per oordeel, bij voorkeur Raad van State, rechterlijke uitspraken of adviesorganen."
+}

@@ -1,0 +1,86 @@
+name: Stemmingen ophalen en verwerken
+
+on:
+  schedule:
+    # Elk uur, op minuut 17. De Kamer stemt meestal op dinsdag, maar ook op andere dagen.
+    - cron: "17 * * * *"
+  push:
+    branches: [master]
+    paths:
+      - "beloften/**"
+      - "beoordelingen/**"
+      - "resultaten/**"
+      - "tijdlijn/**"
+  workflow_dispatch:
+    inputs:
+      vanaf:
+        description: "Opnieuw ophalen vanaf (ISO, UTC), bv. 2023-12-06T00:00:00Z. Leeg = verder waar we waren."
+        required: false
+      max_paginas:
+        description: "Stop na N pagina's (voor een korte test). Leeg = alles."
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-stemmingen
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Stemmingen ophalen
+        env:
+          VANAF: ${{ github.event.inputs.vanaf }}
+          MAX_PAGINAS: ${{ github.event.inputs.max_paginas }}
+        run: |
+          args=()
+          if [ -n "$VANAF" ]; then args+=(--vanaf "$VANAF"); fi
+          if [ -n "$MAX_PAGINAS" ]; then args+=(--max-paginas "$MAX_PAGINAS"); fi
+          python pipeline/sync_stemmingen.py "${args[@]}"
+
+      - name: Tijdlijn controleren tegen de API
+        run: python pipeline/tijdlijn_check.py
+
+      - name: Stemmingen koppelen aan beloften
+        run: python pipeline/verwerk_beloften.py
+
+      - name: AI-codering van nieuwe kandidaten
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AI_MODEL: ${{ vars.AI_MODEL }}
+        run: python pipeline/suggesties.py codering
+
+      - name: Scores berekenen
+        run: python pipeline/verwerk_beloften.py
+
+      - name: Resultaatsuggesties
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AI_MODEL: ${{ vars.AI_MODEL }}
+        run: python pipeline/suggesties.py resultaat
+
+      - name: Wijzigingen opslaan
+        if: always()
+        run: |
+          git config user.name "stemmingen-sync"
+          git config user.email "actions@users.noreply.github.com"
+          mkdir -p data beoordelingen && git add data beoordelingen
+          # Alleen committen als er echt iets is gewijzigd, niet alleen het tijdstip van de run.
+          if git diff --cached --quiet -- data beoordelingen ':!data/sync_state.json'; then
+            echo "Geen nieuwe of gewijzigde stemmingen of scores."
+          else
+            git commit -m "Stemmingen en scores bijgewerkt ($(date -u +%Y-%m-%dT%H:%MZ))"
+            # Iemand kan intussen via het beoordelingsscherm iets hebben opgeslagen.
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+            git push
+          fi

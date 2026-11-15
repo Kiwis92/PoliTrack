@@ -1,0 +1,61 @@
+{
+ "id": "pvv-2023-asiel-007",
+ "belofte": "Criminele statushouders verblijfsvergunning afnemen",
+ "partij": "PVV",
+ "fracties": [],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "Criminele asielzoekers worden vast- of uitgezet, criminele statushouders raken hun verblijfsvergunning kwijt",
+ "bron": "PVV, Nederlanders weer op 1. Verkiezingsprogramma 2023, hoofdstuk Asiel en immigratie",
+ "bron_url": "https://dnpprepo.ub.rug.nl/87730/1/PVV%20Verkiezingsprogramma%202023.pdf",
+ "pagina": 8,
+ "doel": "Een strafrechtelijke veroordeling leidt tot intrekking van de verblijfsvergunning en tot bewaring of uitzetting.",
+ "richting": "Een stem vóór het verlagen van de drempel om verblijfsvergunningen van veroordeelde vreemdelingen in te trekken, of vóór snellere uitzetting van criminele asielzoekers, is in lijn met de belofte.",
+ "kernelementen": [
+  "Lagere drempel (glijdende schaal) voor intrekking bij een veroordeling",
+  "Bewaring of uitzetting van veroordeelde asielzoekers"
+ ],
+ "horizon": "2025-11-11",
+ "concreetheid": "middel",
+ "type": "wetgeving_wijzigen",
+ "toetsbaar": true,
+ "zoektermen": [
+  "criminele asielzoekers",
+  "criminele statushouders",
+  "criminele vreemdelingen",
+  "glijdende schaal",
+  "intrekken verblijfsvergunning",
+  "overlastgevende asielzoekers",
+  "openbare orde en verblijf"
+ ],
+ "dossiers": [],
+ "periode_van": "2023-12-06",
+ "periode_tot": "2025-11-11",
+ "formatie_uitkomst": null,
+ "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
+ "opmerking_redactie": null,
+ "status": "concept",
+ "rechtsstatelijke_toets": {
+  "oordeel": "spanning",
+  "grondslag": "Intrekking van een verblijfsvergunning bij een veroordeling bestaat al (glijdende schaal, art. 3.86 Vreemdelingenbesluit). Voor asielstatushouders stelt de EU-Kwalificatierichtlijn de zwaardere eis van een 'bijzonder ernstig misdrijf' en een individueel gevaar voor de samenleving (HvJEU 6 juli 2023). Het kabinet concludeerde in 2026 dat de glijdende schaal 'maximaal is aangescherpt binnen het geldende EU-recht'. Een automatische intrekking bij elke veroordeling is daarmee niet mogelijk.",
+  "label_publiek": "Deels al bestaand beleid. Verdere aanscherping is begrensd door EU-recht: een asielvergunning kan alleen worden ingetrokken na een bijzonder ernstig misdrijf en een individuele toets.",
+  "bronnen": [
+   {
+    "titel": "Brief minister van Asiel en Migratie over aanscherping van de glijdende schaal, 2026 (Kamerstuk 19637, nr. 3569)",
+    "url": "https://www.eerstekamer.nl/behandeling/20260609/brief_regering/document3/f=/vmy9mzsjowzt.pdf"
+   },
+   {
+    "titel": "Brief regering over schrappen minimumvereiste strafoplegging bij intrekking asielvergunning (Kamerstuk 35210-VI, N)",
+    "url": "https://zoek.officielebekendmakingen.nl/kst-35210-VI-N.pdf"
+   },
+   {
+    "titel": "Adviesraad Migratie (ACVZ), wetsadvies aanscherping openbare-ordebeleid criminele vreemdelingen, december 2020",
+    "url": "https://berthub.eu/tkconv/getraw/2022D36353"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
+}

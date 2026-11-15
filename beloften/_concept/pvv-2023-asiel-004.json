@@ -1,0 +1,60 @@
+{
+ "id": "pvv-2023-asiel-004",
+ "belofte": "Nationale grensbewaking herstellen",
+ "partij": "PVV",
+ "fracties": [],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "De Nederlandse grensbewaking wordt in ere hersteld, pushbacks van asielzoekers die uit onze veilige buurlanden Nederland in willen komen",
+ "bron": "PVV, Nederlanders weer op 1. Verkiezingsprogramma 2023, hoofdstuk Asiel en immigratie",
+ "bron_url": "https://dnpprepo.ub.rug.nl/87730/1/PVV%20Verkiezingsprogramma%202023.pdf",
+ "pagina": 8,
+ "doel": "Structurele controles aan de Nederlandse binnengrenzen en het terugsturen van asielzoekers die uit buurlanden komen.",
+ "richting": "Een stem vóór (her)invoering of verlenging van grenscontroles of vóór het terugsturen van asielzoekers aan de grens is in lijn met de belofte.",
+ "kernelementen": [
+  "Binnengrenscontroles ingevoerd",
+  "Terugsturen van asielzoekers aan de grens (pushbacks)"
+ ],
+ "horizon": "2025-11-11",
+ "concreetheid": "middel",
+ "type": "anders",
+ "toetsbaar": true,
+ "zoektermen": [
+  "grenscontrole",
+  "grensbewaking",
+  "binnengrens",
+  "pushback",
+  "grenstoezicht",
+  "koninklijke marechaussee aan de grens"
+ ],
+ "dossiers": [],
+ "periode_van": "2023-12-06",
+ "periode_tot": "2025-11-11",
+ "formatie_uitkomst": null,
+ "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
+ "opmerking_redactie": "Pushbacks zijn in strijd met EU-recht; het kernelement blijft toetsbaar als inzet, maar realisatie is onwaarschijnlijk. Mogelijke vlag 'externe omstandigheid' is een redactiebeslissing.",
+ "status": "concept",
+ "rechtsstatelijke_toets": {
+  "oordeel": "strijdig_verdrag_of_eu",
+  "grondslag": "Het terugsturen van asielzoekers aan de grens zonder individuele beoordeling (pushback) is in strijd met het verbod op refoulement (Vluchtelingenverdrag, EVRM art. 3) en het verbod op collectieve uitzetting (Vierde Protocol EVRM). Tijdelijke binnengrenscontroles zijn onder de Schengengrenscode wel toegestaan in beperkte gevallen.",
+  "label_publiek": "Grenscontroles zijn tijdelijk mogelijk; het terugsturen van asielzoekers aan de grens (pushbacks) is in strijd met internationale verdragen.",
+  "bronnen": [
+   {
+    "titel": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, nov./dec. 2023",
+    "url": "https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf"
+   },
+   {
+    "titel": "Fadi Fahad (VU, migratierecht), Hoe juridisch haalbaar zijn asielplannen in partijprogramma's",
+    "url": "https://vu.nl/nl/onderzoek/hoe-juridisch-haalbaar-zijn-asielplannen-in-partijprogramma-s"
+   },
+   {
+    "titel": "NOS, Commissie: pushbacks ontoelaatbaar, ook voor Nederland dreigen dagvaardingen",
+    "url": "https://nos.nl/artikel/2412760-commissie-pushbacks-ontoelaatbaar-ook-voor-nederland-dreigen-dagvaardingen"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
+}

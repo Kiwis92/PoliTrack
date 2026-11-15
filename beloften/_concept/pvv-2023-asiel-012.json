@@ -1,0 +1,64 @@
+{
+ "id": "pvv-2023-asiel-012",
+ "belofte": "Hoofddoeken verbieden in overheidsgebouwen",
+ "partij": "PVV",
+ "fracties": [],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "Verbod op het dragen van islamitische hoofddoekjes in overheidsgebouwen inclusief de Staten-Generaal",
+ "bron": "PVV, Nederlanders weer op 1. Verkiezingsprogramma 2023, hoofdstuk Asiel en immigratie",
+ "bron_url": "https://dnpprepo.ub.rug.nl/87730/1/PVV%20Verkiezingsprogramma%202023.pdf",
+ "pagina": 8,
+ "doel": "Een verbod op het dragen van een islamitische hoofddoek in alle overheidsgebouwen, inclusief de Eerste en Tweede Kamer.",
+ "richting": "Een stem vóór een verbod of beperking op het dragen van religieuze hoofdbedekking in overheidsgebouwen of bij de overheid is in lijn met de belofte.",
+ "kernelementen": [
+  "Wettelijk verbod op islamitische hoofddoeken in overheidsgebouwen",
+  "Verbod geldt ook in de Staten-Generaal"
+ ],
+ "horizon": "2025-11-11",
+ "concreetheid": "hoog",
+ "type": "wetgeving_nieuw",
+ "toetsbaar": true,
+ "rechtsstatelijke_toets": {
+  "oordeel": "strijdig_grondwet",
+  "grondslag": "Een algemeen verbod in alle overheidsgebouwen, inclusief voor Kamerleden en bezoekers, botst met art. 6 Grondwet (godsdienstvrijheid), art. 1 Grondwet (gelijke behandeling), art. 4 Grondwet en art. 3 Eerste Protocol EVRM (passief kiesrecht) en art. 9 EVRM. Kledingvoorschriften voor specifieke ambtsdragers in uniform (politie, rechters) zijn wel toegestaan; het College voor de Rechten van de Mens oordeelde in 2017 dat een verbod voor een politiemedewerkster zonder publiekscontact discriminatie was en noemde een boa-verbod in 2022 stigmatiserend. Het HvJEU (13 oktober 2022, C-344/20) staat een neutraliteitseis alleen toe met een rechtvaardiging per geval.",
+  "label_publiek": "Een algemeen verbod is in strijd met de Grondwet. Alleen beperkte kledingregels voor bepaalde ambtsdragers in uniform zijn mogelijk.",
+  "bronnen": [
+   {
+    "titel": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, nov./dec. 2023",
+    "url": "https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf"
+   },
+   {
+    "titel": "NOS, Mensenrechtencollege noemt hoofddoekverbod boa's stigmatiserend en ineffectief, 2022",
+    "url": "https://nos.nl/artikel/2424090-mensenrechtencollege-noemt-hoofddoekverbod-boa-s-stigmatiserend-en-ineffectief"
+   },
+   {
+    "titel": "NOS, Mensenrechtencollege: politie discrimineert medewerker met hoofddoek (oordeel 2017-135)",
+    "url": "https://nos.nl/artikel/2203738-mensenrechtencollege-politie-discrimineert-medewerker-met-hoofddoek.html"
+   },
+   {
+    "titel": "NJB, Werkgever mag hoofddoek niet zomaar verbieden met beroep op neutraliteit (HvJEU C-344/20)",
+    "url": "https://njb.nl/nieuws/werkgever-mag-hoofddoek-niet-zomaar-verbieden-met-beroep-op-neutraliteit"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen.",
+ "zoektermen": [
+  "hoofddoek",
+  "hoofddoekjes",
+  "gezichtsbedekkende kleding",
+  "religieuze uitingen",
+  "neutrale uitstraling",
+  "kledingvoorschriften overheid"
+ ],
+ "dossiers": [],
+ "periode_van": "2023-12-06",
+ "periode_tot": "2025-11-11",
+ "formatie_uitkomst": null,
+ "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
+ "opmerking_redactie": "Opgenomen met grondwetslabel. Een stem vóór neutrale kledingvoorschriften voor bijvoorbeeld politie of boa's telt als inzet in lijn met de belofte met directheid 0,5, omdat het een deelaspect is.",
+ "status": "concept"
+}
