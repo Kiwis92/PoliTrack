@@ -156,6 +156,12 @@ def test_resultaatoordeel_en_wederhoor(werkmap):
     assert score(werkmap)["resultaat"]["oordeel"] is None
 
 
+def test_conceptbelofte_wordt_overgeslagen(werkmap):
+    schrijf(werkmap / "beloften" / "vvd-2023-huur.json", HUURBELOFTE | {"status": "concept"})
+    assert v.main() == 0
+    assert not (werkmap / "data" / "kandidaten" / "vvd-2023-huur.json").exists()
+
+
 def test_ongeldige_belofte_geeft_fout(werkmap):
     schrijf(werkmap / "beloften" / "kapot.json", {"id": "anders", "partij": "X"})
     assert v.main() == 1

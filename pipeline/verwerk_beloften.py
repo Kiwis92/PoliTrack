@@ -397,6 +397,9 @@ def main() -> int:
         if pad.name.startswith("_"):
             continue
         belofte = lees_json(pad)
+        if belofte.get("status") == "concept":
+            print(f"{pad.name}: status concept, overgeslagen tot de redactie de specificatie vaststelt")
+            continue
         ontbreekt = [v for v in ("id", "partij", "zoektermen") if not belofte.get(v)]
         if ontbreekt or belofte.get("id") != pad.stem:
             print(f"FOUT {pad.name}: verplichte velden ontbreken {ontbreekt} of id wijkt af van bestandsnaam")

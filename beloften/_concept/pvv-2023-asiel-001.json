@@ -1,0 +1,44 @@
+{
+ "id": "pvv-2023-asiel-001",
+ "belofte": "Asielstop invoeren",
+ "partij": "PVV",
+ "fracties": [],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "Asielstop en algeheel restrictief immigratiebeleid",
+ "citaat_context": "Wij steunen, op weg naar de door ons beoogde en noodzakelijke asielstop, maatregelen die de instroom van asielzoekers en andere migranten fors zullen verminderen. (p. 7)",
+ "bron": "PVV, Nederlanders weer op 1. Verkiezingsprogramma 2023, hoofdstuk Asiel en immigratie",
+ "bron_url": "https://dnpprepo.ub.rug.nl/87730/1/PVV%20Verkiezingsprogramma%202023.pdf",
+ "pagina": 8,
+ "doel": "Een volledige stop op het toelaten van asielzoekers in Nederland.",
+ "richting": "Een stem vóór een maatregel die de asielinstroom stopt of fors beperkt is in lijn met de belofte; een stem vóór uitbreiding of versoepeling van toelating gaat ertegen in.",
+ "kernelementen": [
+  "Wettelijke of beleidsmatige asielstop (geen nieuwe asielaanvragen in behandeling)"
+ ],
+ "horizon": "2025-11-11",
+ "concreetheid": "hoog",
+ "type": "wetgeving_nieuw",
+ "toetsbaar": true,
+ "zoektermen": [
+  "asielstop",
+  "asielinstroom",
+  "instroom van asielzoekers",
+  "asielnoodmaatregel",
+  "tweestatusstelsel",
+  "asielpauze",
+  "asielquotum",
+  "asielcrisis"
+ ],
+ "dossiers": [
+  "36704",
+  "36703",
+  "19637"
+ ],
+ "periode_van": "2023-12-06",
+ "periode_tot": "2025-11-11",
+ "formatie_uitkomst": null,
+ "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
+ "opmerking_redactie": "Het programma zelf noemt op p. 7 ook steun voor maatregelen die de instroom 'fors verminderen'. Het kernelement is de stop; beperkende maatregelen tellen als inzet in lijn met de belofte, maar realiseren haar hooguit deels.",
+ "status": "concept"
+}
