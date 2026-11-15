@@ -36,5 +36,13 @@
  "formatie_uitkomst": null,
  "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
  "opmerking_redactie": "Het citaat bevat twee beloften; de tweede (VN-Vluchtelingenverdrag) staat apart als 003.",
- "status": "concept"
+ "status": "concept",
+ "rechtsstatelijke_toets": {
+  "oordeel": "strijdig_verdrag_of_eu",
+  "grondslag": "EU-recht bindt als wet; een eenzijdige opt-out bestaat niet. Alleen via heronderhandeling van de EU-verdragen of uittreding (art. 50 VEU).",
+  "label_publiek": "Kan Nederland niet eenzijdig regelen. Een opt-out vereist instemming van alle EU-lidstaten of uittreding uit de EU.",
+  "bron": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, november/december 2023, https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf",
+  "getoetst_door": "concept, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }

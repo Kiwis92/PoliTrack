@@ -38,5 +38,13 @@
  "formatie_uitkomst": null,
  "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
  "opmerking_redactie": "Strafbaarstelling is in 2025 via amendement in de Asielnoodmaatregelenwet opgenomen; het stemgedrag op dat amendement is de kern.",
- "status": "concept"
+ "status": "concept",
+ "rechtsstatelijke_toets": {
+  "oordeel": "nog_niet_getoetst",
+  "grondslag": "Niet beoordeeld in de doorrekening van Voermans. Strafbaarstelling van illegaal verblijf is in 2025 via amendement in een wetsvoorstel opgenomen; de Raad van State en de Eerste Kamer hebben zich erover gebogen.",
+  "label_publiek": "Juridisch omstreden; de redactie toetst dit nog.",
+  "bron": null,
+  "getoetst_door": "concept, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }

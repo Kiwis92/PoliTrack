@@ -220,7 +220,13 @@ function tekenSpec() {
       el("dt", {}, "Doel"), el("dd", {}, b.doel || "—"),
       el("dt", {}, "Richting"), el("dd", {}, b.richting || "—"),
       el("dt", {}, "Kernelementen"), el("dd", {}, (b.kernelementen || []).join(" · ") || "—"),
-      el("dt", {}, "Horizon"), el("dd", {}, b.horizon || "—")));
+      el("dt", {}, "Horizon"), el("dd", {}, b.horizon || "—"),
+      el("dt", {}, "Rechtsstatelijke toets"), el("dd", {}, toetsRegel(b.rechtsstatelijke_toets))));
+}
+const TOETS = { strijdig_grondwet: ["In strijd met de Grondwet", "st-bad"], strijdig_verdrag_of_eu: ["In strijd met verdragen of EU-recht", "st-bad"], spanning: ["Juridisch omstreden", "st-warn"], geen_bezwaar: ["Geen juridisch bezwaar", "st-ok"], nog_niet_getoetst: ["Nog niet getoetst", "st-open"] };
+function toetsRegel(t) {
+  const [tekst, kleur] = TOETS[(t && t.oordeel) || "nog_niet_getoetst"] || TOETS.nog_niet_getoetst;
+  return el("span", {}, el("span", { class: "tag " + kleur }, tekst), t && t.label_publiek ? " " + t.label_publiek : "");
 }
 function teken() {
   for (const b of document.querySelectorAll("nav.tabs button")) b.setAttribute("aria-selected", String(b.dataset.tab === S.tab));

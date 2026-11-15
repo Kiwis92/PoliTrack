@@ -435,6 +435,7 @@ def main() -> int:
         score = bereken_score(belofte, kandidaten, definitief)
         score["codering"] = {"codeurs": sorted(coderingen), **stand}
         score["resultaat"] = lees_resultaat(belofte["id"])
+        score["rechtsstatelijke_toets"] = belofte.get("rechtsstatelijke_toets") or {"oordeel": "nog_niet_getoetst"}
         paren = codeurparen(coderingen)
         for naam, p in paren.items():
             alle_paren[naam].extend(p)
@@ -452,6 +453,7 @@ def main() -> int:
                 "kandidaten": len(kandidaten),
                 **stand,
                 "inzet": score["inzet"].get("oordeel"),
+                "rechtsstatelijk": score["rechtsstatelijke_toets"].get("oordeel"),
                 "resultaat": score["resultaat"]["oordeel"],
                 "resultaat_status": score["resultaat"]["status"],
             }

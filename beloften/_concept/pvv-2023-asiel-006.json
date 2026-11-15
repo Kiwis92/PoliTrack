@@ -34,5 +34,13 @@
  "formatie_uitkomst": null,
  "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
  "opmerking_redactie": "Zoekterm 'lvv' kan ruis geven; de redactie sluit niet-passende treffers uit met U3.",
- "status": "concept"
+ "status": "concept",
+ "rechtsstatelijke_toets": {
+  "oordeel": "nog_niet_getoetst",
+  "grondslag": "Niet beoordeeld in de doorrekening van Voermans. Raakt aan het Europees Sociaal Handvest (recht op basisvoorzieningen).",
+  "label_publiek": "Juridisch omstreden; de redactie toetst dit nog.",
+  "bron": null,
+  "getoetst_door": "concept, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }

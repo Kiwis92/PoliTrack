@@ -1,0 +1,46 @@
+{
+ "id": "pvv-2023-asiel-012",
+ "belofte": "Hoofddoeken verbieden in overheidsgebouwen",
+ "partij": "PVV",
+ "fracties": [],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "Verbod op het dragen van islamitische hoofddoekjes in overheidsgebouwen inclusief de Staten-Generaal",
+ "bron": "PVV, Nederlanders weer op 1. Verkiezingsprogramma 2023, hoofdstuk Asiel en immigratie",
+ "bron_url": "https://dnpprepo.ub.rug.nl/87730/1/PVV%20Verkiezingsprogramma%202023.pdf",
+ "pagina": 8,
+ "doel": "Een verbod op het dragen van een islamitische hoofddoek in alle overheidsgebouwen, inclusief de Eerste en Tweede Kamer.",
+ "richting": "Een stem vóór een verbod of beperking op het dragen van religieuze hoofdbedekking in overheidsgebouwen of bij de overheid is in lijn met de belofte.",
+ "kernelementen": [
+  "Wettelijk verbod op islamitische hoofddoeken in overheidsgebouwen",
+  "Verbod geldt ook in de Staten-Generaal"
+ ],
+ "horizon": "2025-11-11",
+ "concreetheid": "hoog",
+ "type": "wetgeving_nieuw",
+ "toetsbaar": true,
+ "rechtsstatelijke_toets": {
+  "oordeel": "strijdig_grondwet",
+  "grondslag": "Art. 6 Grondwet (vrijheid van godsdienst) en art. 1 Grondwet (gelijke behandeling) bij een algemeen verbod; kledingvoorschriften voor specifieke ambtsdragers (bijv. politie, rechters) kunnen wel.",
+  "label_publiek": "Een algemeen verbod is in strijd met de Grondwet. Alleen beperkte kledingregels voor bepaalde ambtsdragers zijn mogelijk.",
+  "bron": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, november/december 2023, https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf",
+  "getoetst_door": "concept, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen.",
+ "zoektermen": [
+  "hoofddoek",
+  "hoofddoekjes",
+  "gezichtsbedekkende kleding",
+  "religieuze uitingen",
+  "neutrale uitstraling",
+  "kledingvoorschriften overheid"
+ ],
+ "dossiers": [],
+ "periode_van": "2023-12-06",
+ "periode_tot": "2025-11-11",
+ "formatie_uitkomst": null,
+ "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
+ "opmerking_redactie": "Opgenomen met grondwetslabel. Een stem vóór neutrale kledingvoorschriften voor bijvoorbeeld politie of boa's telt als inzet in lijn met de belofte met directheid 0,5, omdat het een deelaspect is.",
+ "status": "concept"
+}

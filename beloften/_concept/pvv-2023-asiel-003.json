@@ -30,5 +30,13 @@
  "formatie_uitkomst": null,
  "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
  "opmerking_redactie": "Zelfde citaat als 002; gesplitst omdat het twee los toetsbare acties zijn.",
- "status": "concept"
+ "status": "concept",
+ "rechtsstatelijke_toets": {
+  "oordeel": "geen_bezwaar",
+  "grondslag": "Opzegging is juridisch mogelijk, maar verandert weinig zolang het EU-asielrecht en de rechtspraak van het EU-Hof en het EHRM gelden.",
+  "label_publiek": "Juridisch mogelijk, maar met beperkt effect zolang Nederland aan het EU-asielrecht gebonden blijft.",
+  "bron": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, november/december 2023, https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf",
+  "getoetst_door": "concept, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }

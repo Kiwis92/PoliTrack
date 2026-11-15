@@ -156,6 +156,15 @@ def test_resultaatoordeel_en_wederhoor(werkmap):
     assert score(werkmap)["resultaat"]["oordeel"] is None
 
 
+def test_rechtsstatelijke_toets_komt_in_score_en_rij(werkmap):
+    zet_pilot(werkmap)
+    toets = {"oordeel": "strijdig_grondwet", "grondslag": "art. 6 Gw", "label_publiek": "In strijd met de Grondwet."}
+    schrijf(werkmap / "beloften" / "vvd-2023-huur.json", HUURBELOFTE | {"rechtsstatelijke_toets": toets})
+    v.main()
+    assert score(werkmap)["rechtsstatelijke_toets"] == toets
+    assert lees(werkmap / "data" / "beoordelingsrij.json")[0]["rechtsstatelijk"] == "strijdig_grondwet"
+
+
 def test_conceptbelofte_wordt_overgeslagen(werkmap):
     schrijf(werkmap / "beloften" / "vvd-2023-huur.json", HUURBELOFTE | {"status": "concept"})
     assert v.main() == 0

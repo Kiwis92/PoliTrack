@@ -20,7 +20,7 @@ def test_scherm_doorloopt_coderen_verschillen_resultaat(tmp_path):
     K=[{"sleutel":f"b{i}:z{i}","datum":"2026-03-10","zaaknummer":f"2026Z0{i}","type":t,"titel":"Huurwet","onderwerp":o,"besluit":"Aangenomen.","partijstem":{"voor":22,"tegen":0,"niet_deelgenomen":0}}
        for i,(t,o) in enumerate([("wet","Wet betaalbare huur <script>alert(1)</script>"),("motie","Motie huurbevriezing"),("amendement","Amendement huurprijs")])]
     files={
-     "beloften/vvd-2023-huur.json":{"id":"vvd-2023-huur","partij":"VVD","verkiezingsjaar":2023,"citaat":"Wij verlagen de huur","doel":"Huur omlaag","richting":"Stem voor lagere huur","kernelementen":["huur omlaag"],"horizon":"2027-12-31"},
+     "beloften/vvd-2023-huur.json":{"id":"vvd-2023-huur","partij":"VVD","verkiezingsjaar":2023,"citaat":"Wij verlagen de huur","doel":"Huur omlaag","richting":"Stem voor lagere huur","kernelementen":["huur omlaag"],"horizon":"2027-12-31","rechtsstatelijke_toets":{"oordeel":"strijdig_grondwet","label_publiek":"Alleen na grondwetswijziging."}},
      "data/kandidaten/vvd-2023-huur.json":{"selectie":{"zoektermen":["huur"],"dossiers":[],"peildatum":"2026-11-13"},"kandidaten":K},
      "data/scores/vvd-2023-huur.json":{"inzet":{"oordeel":"Onvoldoende bewijs"},"resultaat":{"oordeel":None,"status":"nog niet geaccordeerd"},"codering":{"codeurs":["ai"],"definitief":0,"geschil":0,"een_codering":3,"ongecodeerd":0}},
      "data/resultaat_suggesties/vvd-2023-huur.json":{"regel":{"oordeel":"loopt_nog","uitleg":"Wet aangenomen in TK.","feiten":{"horizon":"2027-12-31","horizon_verstreken":False,"wetten_voor_belofte_aangenomen_tk":["2026Z00"],"wetten_tegen_belofte_aangenomen_tk":[],"nog_te_beoordelen_stemmingen":3}},"ai":{"oordeel":"loopt_nog","onderbouwing":"In gang.","per_kernelement":[{"kernelement":"huur omlaag","stand":"in gang"}],"te_controleren":["Eerste Kamer"],"model":"m","op":"nu"}},
@@ -54,6 +54,7 @@ def test_scherm_doorloopt_coderen_verschillen_resultaat(tmp_path):
         pg.fill("#token","geheim"); pg.click("#login"); pg.wait_for_selector("#paneel form")
         assert "Ingelogd als billy" in pg.inner_text("#wie") and pg.input_value("#token")==""
         assert pg.locator("#belofte option").count()==1
+    assert "In strijd met de Grondwet" in pg.inner_text("#spec") and "Alleen na grondwetswijziging." in pg.inner_text("#spec")
         t=pg.inner_text("#paneel"); assert "3 van 3" in t and "ai zegt" not in t and "22 voor" not in t, t   # blind
         assert "<script>alert(1)</script>" in t   # als tekst getoond, niet uitgevoerd
         pg.screenshot(path=str(tmp_path / "coderen.png"),full_page=True)

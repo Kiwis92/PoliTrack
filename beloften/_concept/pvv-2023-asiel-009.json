@@ -33,5 +33,13 @@
  "formatie_uitkomst": null,
  "_formatie_uitkomst_uitleg": "In te vullen door de redactie na lezing van het Hoofdlijnenakkoord van 16 mei 2024: overgenomen | afgezwakt_overgenomen | niet_opgenomen | tegengestelde_afspraak",
  "opmerking_redactie": "Na de val van Assad (december 2024) is dit onderwerp vaak in stemming geweest. Zoektermen vangen ook buitenlandbeleid over Syrië; uitsluiten met U3.",
- "status": "concept"
+ "status": "concept",
+ "rechtsstatelijke_toets": {
+  "oordeel": "nog_niet_getoetst",
+  "grondslag": "Niet beoordeeld in de doorrekening van Voermans. Intrekking moet per persoon worden getoetst aan het verbod op refoulement.",
+  "label_publiek": "Alleen mogelijk per individuele beoordeling, niet als collectieve maatregel.",
+  "bron": null,
+  "getoetst_door": "concept, ter bevestiging door de redactie"
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }

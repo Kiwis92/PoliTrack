@@ -24,5 +24,13 @@
   "36000"
  ],
  "periode_van": "2023-12-06",
- "periode_tot": null
+ "periode_tot": null,
+ "rechtsstatelijke_toets": {
+  "oordeel": "nog_niet_getoetst",
+  "grondslag": "",
+  "label_publiek": "",
+  "bron": null,
+  "getoetst_door": null
+ },
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }
