@@ -29,8 +29,14 @@
   "oordeel": "nog_niet_getoetst",
   "grondslag": "",
   "label_publiek": "",
-  "bron": null,
+  "bronnen": [
+   {
+    "titel": "",
+    "url": ""
+   }
+  ],
+  "getoetst_op": null,
   "getoetst_door": null
  },
- "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
+ "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen. Minimaal twee onafhankelijke bronnen per oordeel, bij voorkeur Raad van State, rechterlijke uitspraken of adviesorganen."
 }

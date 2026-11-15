@@ -43,10 +43,24 @@
  "status": "concept",
  "rechtsstatelijke_toets": {
   "oordeel": "strijdig_verdrag_of_eu",
-  "grondslag": "VN-Vluchtelingenverdrag, EU-asielrecht (o.a. Dublinverordening); art. 91 e.v. Grondwet over verdragen",
+  "grondslag": "Een asielstop betekent dat aanvragen niet in behandeling worden genomen. Dat is in strijd met het VN-Vluchtelingenverdrag, het EVRM (verbod op collectieve uitzetting), de EU-Kwalificatie- en Procedurerichtlijn en de Dublinverordening. Het kabinet-Schoof erkende zelf dat instroombeperkende maatregelen alleen kunnen 'voor zover in overeenstemming met Europese regelgeving en internationale verdragen'.",
   "label_publiek": "Kan niet binnen de huidige verdragen en EU-regels. Een volledige asielstop vereist opzegging van verdragen of wijziging van EU-recht.",
-  "bron": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, november/december 2023, https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf",
-  "getoetst_door": "concept, ter bevestiging door de redactie"
+  "bronnen": [
+   {
+    "titel": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, nov./dec. 2023",
+    "url": "https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf"
+   },
+   {
+    "titel": "Fadi Fahad (VU, migratierecht), Hoe juridisch haalbaar zijn asielplannen in partijprogramma's",
+    "url": "https://vu.nl/nl/onderzoek/hoe-juridisch-haalbaar-zijn-asielplannen-in-partijprogramma-s"
+   },
+   {
+    "titel": "Antwoord minister van Asiel en Migratie op Kamervragen over de opt-out, 16 oktober 2024 (Aanhangsel Handelingen 2024/25, nr. 295)",
+    "url": "https://zoek.officielebekendmakingen.nl/ah-tk-20242025-295.html"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
  },
  "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }

@@ -36,11 +36,25 @@
  "opmerking_redactie": "Zoekterm 'lvv' kan ruis geven; de redactie sluit niet-passende treffers uit met U3.",
  "status": "concept",
  "rechtsstatelijke_toets": {
-  "oordeel": "nog_niet_getoetst",
-  "grondslag": "Niet beoordeeld in de doorrekening van Voermans. Raakt aan het Europees Sociaal Handvest (recht op basisvoorzieningen).",
-  "label_publiek": "Juridisch omstreden; de redactie toetst dit nog.",
-  "bron": null,
-  "getoetst_door": "concept, ter bevestiging door de redactie"
+  "oordeel": "spanning",
+  "grondslag": "Het Europees Comité voor Sociale Rechten oordeelde in 2014 dat Nederland het Europees Sociaal Handvest schendt als het ongedocumenteerden geen bed, bad en brood biedt; de Centrale Raad van Beroep volgde dat in december 2014. De Raad van State oordeelde op 26 november 2015 dat de staat wel voorwaarden mag stellen (meewerken aan vertrek) en dat onvoorwaardelijke opvang niet verplicht is, behalve in bijzondere omstandigheden. Een algeheel verbod op opvang gaat verder dan die rechtspraak toestaat.",
+  "label_publiek": "Juridisch omstreden. Voorwaarden stellen aan opvang mag; een volledig verbod botst met het Europees Sociaal Handvest en Nederlandse rechtspraak.",
+  "bronnen": [
+   {
+    "titel": "Raad van State, Staatssecretaris mag voorwaarden stellen bij bed-bad-broodopvang, uitspraak 26 november 2015 (201500577/1)",
+    "url": "https://www.raadvanstate.nl/@8699/staatssecretaris-mag/"
+   },
+   {
+    "titel": "NJB, Bed, bad en brood voor uitgeprocedeerde asielzoekers (ECSR-beslissing 10 november 2014)",
+    "url": "https://njb.nl/blogs/bed-bad-en-brood-voor-uitgeprocedeerde-asielzoekers"
+   },
+   {
+    "titel": "Amnesty International, Mensenrechten op straat: bed, bad, brood en de menselijke waardigheid, 10 november 2015",
+    "url": "https://www.amnesty.nl/content/uploads/2015/11/amn_15_14_notitie_bbb.pdf"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
  },
  "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }

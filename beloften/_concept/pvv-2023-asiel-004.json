@@ -37,10 +37,24 @@
  "status": "concept",
  "rechtsstatelijke_toets": {
   "oordeel": "strijdig_verdrag_of_eu",
-  "grondslag": "Pushbacks zijn in strijd met het verbod op refoulement (VN-Vluchtelingenverdrag en mensenrechtenverdragen). Binnengrenscontroles zijn onder Schengen alleen in beperkte gevallen toegestaan.",
+  "grondslag": "Het terugsturen van asielzoekers aan de grens zonder individuele beoordeling (pushback) is in strijd met het verbod op refoulement (Vluchtelingenverdrag, EVRM art. 3) en het verbod op collectieve uitzetting (Vierde Protocol EVRM). Tijdelijke binnengrenscontroles zijn onder de Schengengrenscode wel toegestaan in beperkte gevallen.",
   "label_publiek": "Grenscontroles zijn tijdelijk mogelijk; het terugsturen van asielzoekers aan de grens (pushbacks) is in strijd met internationale verdragen.",
-  "bron": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, november/december 2023, https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf",
-  "getoetst_door": "concept, ter bevestiging door de redactie"
+  "bronnen": [
+   {
+    "titel": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, nov./dec. 2023",
+    "url": "https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf"
+   },
+   {
+    "titel": "Fadi Fahad (VU, migratierecht), Hoe juridisch haalbaar zijn asielplannen in partijprogramma's",
+    "url": "https://vu.nl/nl/onderzoek/hoe-juridisch-haalbaar-zijn-asielplannen-in-partijprogramma-s"
+   },
+   {
+    "titel": "NOS, Commissie: pushbacks ontoelaatbaar, ook voor Nederland dreigen dagvaardingen",
+    "url": "https://nos.nl/artikel/2412760-commissie-pushbacks-ontoelaatbaar-ook-voor-nederland-dreigen-dagvaardingen"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
  },
  "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }

@@ -37,11 +37,25 @@
  "opmerking_redactie": null,
  "status": "concept",
  "rechtsstatelijke_toets": {
-  "oordeel": "nog_niet_getoetst",
-  "grondslag": "Niet beoordeeld in de doorrekening van Voermans. Intrekking bij veroordeling bestaat al (glijdende schaal); aanscherping is binnen EU-recht begrensd.",
-  "label_publiek": "Deels al mogelijk; verdere aanscherping is begrensd door EU-recht.",
-  "bron": null,
-  "getoetst_door": "concept, ter bevestiging door de redactie"
+  "oordeel": "spanning",
+  "grondslag": "Intrekking van een verblijfsvergunning bij een veroordeling bestaat al (glijdende schaal, art. 3.86 Vreemdelingenbesluit). Voor asielstatushouders stelt de EU-Kwalificatierichtlijn de zwaardere eis van een 'bijzonder ernstig misdrijf' en een individueel gevaar voor de samenleving (HvJEU 6 juli 2023). Het kabinet concludeerde in 2026 dat de glijdende schaal 'maximaal is aangescherpt binnen het geldende EU-recht'. Een automatische intrekking bij elke veroordeling is daarmee niet mogelijk.",
+  "label_publiek": "Deels al bestaand beleid. Verdere aanscherping is begrensd door EU-recht: een asielvergunning kan alleen worden ingetrokken na een bijzonder ernstig misdrijf en een individuele toets.",
+  "bronnen": [
+   {
+    "titel": "Brief minister van Asiel en Migratie over aanscherping van de glijdende schaal, 2026 (Kamerstuk 19637, nr. 3569)",
+    "url": "https://www.eerstekamer.nl/behandeling/20260609/brief_regering/document3/f=/vmy9mzsjowzt.pdf"
+   },
+   {
+    "titel": "Brief regering over schrappen minimumvereiste strafoplegging bij intrekking asielvergunning (Kamerstuk 35210-VI, N)",
+    "url": "https://zoek.officielebekendmakingen.nl/kst-35210-VI-N.pdf"
+   },
+   {
+    "titel": "Adviesraad Migratie (ACVZ), wetsadvies aanscherping openbare-ordebeleid criminele vreemdelingen, december 2020",
+    "url": "https://berthub.eu/tkconv/getraw/2022D36353"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
  },
  "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }

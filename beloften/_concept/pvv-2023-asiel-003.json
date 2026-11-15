@@ -33,10 +33,24 @@
  "status": "concept",
  "rechtsstatelijke_toets": {
   "oordeel": "geen_bezwaar",
-  "grondslag": "Opzegging is juridisch mogelijk, maar verandert weinig zolang het EU-asielrecht en de rechtspraak van het EU-Hof en het EHRM gelden.",
-  "label_publiek": "Juridisch mogelijk, maar met beperkt effect zolang Nederland aan het EU-asielrecht gebonden blijft.",
-  "bron": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, november/december 2023, https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf",
-  "getoetst_door": "concept, ter bevestiging door de redactie"
+  "grondslag": "Opzegging van het Vluchtelingenverdrag is juridisch mogelijk (art. 44 van het verdrag), maar verandert weinig: dezelfde verplichtingen volgen uit het EVRM en de EU-Kwalificatierichtlijn, die Nederland blijven binden.",
+  "label_publiek": "Juridisch mogelijk, maar met beperkt effect: het EVRM en het EU-asielrecht leggen dezelfde verplichtingen op.",
+  "bronnen": [
+   {
+    "titel": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, nov./dec. 2023",
+    "url": "https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf"
+   },
+   {
+    "titel": "Fadi Fahad (VU, migratierecht), Hoe juridisch haalbaar zijn asielplannen in partijprogramma's",
+    "url": "https://vu.nl/nl/onderzoek/hoe-juridisch-haalbaar-zijn-asielplannen-in-partijprogramma-s"
+   },
+   {
+    "titel": "Kabinetsreactie op onderzoek naar het Vluchtelingenverdrag (Kamerstuk 19637, nr. 2645)",
+    "url": "https://zoek.officielebekendmakingen.nl/kst-19637-2645.pdf"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
  },
  "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }

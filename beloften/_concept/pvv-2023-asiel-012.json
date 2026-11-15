@@ -22,10 +22,28 @@
  "toetsbaar": true,
  "rechtsstatelijke_toets": {
   "oordeel": "strijdig_grondwet",
-  "grondslag": "Art. 6 Grondwet (vrijheid van godsdienst) en art. 1 Grondwet (gelijke behandeling) bij een algemeen verbod; kledingvoorschriften voor specifieke ambtsdragers (bijv. politie, rechters) kunnen wel.",
-  "label_publiek": "Een algemeen verbod is in strijd met de Grondwet. Alleen beperkte kledingregels voor bepaalde ambtsdragers zijn mogelijk.",
-  "bron": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, november/december 2023, https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf",
-  "getoetst_door": "concept, ter bevestiging door de redactie"
+  "grondslag": "Een algemeen verbod in alle overheidsgebouwen, inclusief voor Kamerleden en bezoekers, botst met art. 6 Grondwet (godsdienstvrijheid), art. 1 Grondwet (gelijke behandeling), art. 4 Grondwet en art. 3 Eerste Protocol EVRM (passief kiesrecht) en art. 9 EVRM. Kledingvoorschriften voor specifieke ambtsdragers in uniform (politie, rechters) zijn wel toegestaan; het College voor de Rechten van de Mens oordeelde in 2017 dat een verbod voor een politiemedewerkster zonder publiekscontact discriminatie was en noemde een boa-verbod in 2022 stigmatiserend. Het HvJEU (13 oktober 2022, C-344/20) staat een neutraliteitseis alleen toe met een rechtvaardiging per geval.",
+  "label_publiek": "Een algemeen verbod is in strijd met de Grondwet. Alleen beperkte kledingregels voor bepaalde ambtsdragers in uniform zijn mogelijk.",
+  "bronnen": [
+   {
+    "titel": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, nov./dec. 2023",
+    "url": "https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf"
+   },
+   {
+    "titel": "NOS, Mensenrechtencollege noemt hoofddoekverbod boa's stigmatiserend en ineffectief, 2022",
+    "url": "https://nos.nl/artikel/2424090-mensenrechtencollege-noemt-hoofddoekverbod-boa-s-stigmatiserend-en-ineffectief"
+   },
+   {
+    "titel": "NOS, Mensenrechtencollege: politie discrimineert medewerker met hoofddoek (oordeel 2017-135)",
+    "url": "https://nos.nl/artikel/2203738-mensenrechtencollege-politie-discrimineert-medewerker-met-hoofddoek.html"
+   },
+   {
+    "titel": "NJB, Werkgever mag hoofddoek niet zomaar verbieden met beroep op neutraliteit (HvJEU C-344/20)",
+    "url": "https://njb.nl/nieuws/werkgever-mag-hoofddoek-niet-zomaar-verbieden-met-beroep-op-neutraliteit"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
  },
  "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen.",
  "zoektermen": [

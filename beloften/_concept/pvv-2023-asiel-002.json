@@ -39,10 +39,24 @@
  "status": "concept",
  "rechtsstatelijke_toets": {
   "oordeel": "strijdig_verdrag_of_eu",
-  "grondslag": "EU-recht bindt als wet; een eenzijdige opt-out bestaat niet. Alleen via heronderhandeling van de EU-verdragen of uittreding (art. 50 VEU).",
-  "label_publiek": "Kan Nederland niet eenzijdig regelen. Een opt-out vereist instemming van alle EU-lidstaten of uittreding uit de EU.",
-  "bron": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, november/december 2023, https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf",
-  "getoetst_door": "concept, ter bevestiging door de redactie"
+  "grondslag": "De EU-verdragen kennen geen procedure om achteraf een opt-out te krijgen; daarvoor is een verdragswijziging met instemming van alle lidstaten nodig. Het kabinet-Schoof schreef dat zelf aan de Kamer, en de Europese Commissie bevestigde dat de regels bindend blijven.",
+  "label_publiek": "Kan Nederland niet eenzijdig regelen. Een opt-out vereist wijziging van de EU-verdragen met instemming van alle lidstaten.",
+  "bronnen": [
+   {
+    "titel": "Wim Voermans (Universiteit Leiden), Rechtsstatelijke doorrekening PVV-programma, nov./dec. 2023",
+    "url": "https://www.universiteitleiden.nl/binaries/content/assets/rechtsgeleerdheid/instituut-voor-publiekrecht/staats--en-bestuursrecht/rechtsstatelijke-doorrekening-pvv-programma-door-wim-voermans.pdf"
+   },
+   {
+    "titel": "Brief minister van Asiel en Migratie over de opt-out, 19 september 2024 (Kamerstuk 19637, nr. 3274)",
+    "url": "https://zoek.officielebekendmakingen.nl/kst-19637-3274.html"
+   },
+   {
+    "titel": "NOS, Nederland informeert EU over opt-out-plannen, 18 september 2024",
+    "url": "https://nos.nl/l/2537599"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
  },
  "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }

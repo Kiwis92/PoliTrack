@@ -40,11 +40,29 @@
  "opmerking_redactie": "Strafbaarstelling is in 2025 via amendement in de Asielnoodmaatregelenwet opgenomen; het stemgedrag op dat amendement is de kern.",
  "status": "concept",
  "rechtsstatelijke_toets": {
-  "oordeel": "nog_niet_getoetst",
-  "grondslag": "Niet beoordeeld in de doorrekening van Voermans. Strafbaarstelling van illegaal verblijf is in 2025 via amendement in een wetsvoorstel opgenomen; de Raad van State en de Eerste Kamer hebben zich erover gebogen.",
-  "label_publiek": "Juridisch omstreden; de redactie toetst dit nog.",
-  "bron": null,
-  "getoetst_door": "concept, ter bevestiging door de redactie"
+  "oordeel": "spanning",
+  "grondslag": "Strafbaarstelling van illegaal verblijf is niet verboden, maar begrensd door de EU-Terugkeerrichtlijn (een eerder plan werd in 2011 daarmee strijdig bevonden). Het amendement-Vondeling (1 juli 2025) kwam tot stand zonder advies van de Raad van State; de Raad waarschuwde in zijn voorlichting van 28 augustus 2025 dat hulpverleners strafbaar worden, de Raad voor de rechtspraak vroeg heroverweging en de Adviesraad Migratie ontraadde het sterk. Het kabinet repareerde dit met een novelle (Kamerstuk 36855).",
+  "label_publiek": "Juridisch omstreden. Kan alleen binnen de grenzen van de EU-Terugkeerrichtlijn; Raad van State, Raad voor de rechtspraak en Adviesraad Migratie waarschuwden voor de gevolgen.",
+  "bronnen": [
+   {
+    "titel": "Raad van State, voorlichting over amendement strafbaarstelling illegaal verblijf, 28 augustus 2025 (W03.25.00207/II)",
+    "url": "https://www.raadvanstate.nl/adviezen/%40152476/w03-25-00207-ii/"
+   },
+   {
+    "titel": "Raad voor de rechtspraak, advies novelle Asielnoodmaatregelenwet, 23 september 2025",
+    "url": "https://www.rechtspraak.nl/SiteCollectionDocuments/20250923%20-%20advies%20novelle%20deelnemingsvormen.pdf"
+   },
+   {
+    "titel": "Nederlandse orde van advocaten, wetgevingsadvies strafbaarstelling niet-rechtmatig verblijf, 28 augustus 2025",
+    "url": "https://www.advocatenorde.nl/nsp/download/5606/0"
+   },
+   {
+    "titel": "Adviesraad Migratie, notitie deskundigenbijeenkomst Eerste Kamer, 7 oktober 2025",
+    "url": "https://eerstekamer.nl/9370000/1/j4nvi0xeni9vr2l_j9vvkfvj6b325az/vmrbm3wprqwx/f=/vmrbm4er1zub.pdf"
+   }
+  ],
+  "getoetst_op": "2026-11-15",
+  "getoetst_door": "concept op basis van genoemde bronnen, ter bevestiging door de redactie"
  },
  "_rechtsstatelijke_toets_uitleg": "Verplichte constitutionele toetsing uit het redactiestatuut. 'oordeel': strijdig_grondwet (kan niet zonder grondwetswijziging) | strijdig_verdrag_of_eu (kan niet zonder opzegging of heronderhandeling van verdragen of EU-recht) | spanning (juridisch omstreden, nadere toets nodig) | geen_bezwaar | nog_niet_getoetst. 'label_publiek' is de tekst die kiezers te zien krijgen."
 }

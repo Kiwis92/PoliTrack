@@ -226,7 +226,9 @@ function tekenSpec() {
 const TOETS = { strijdig_grondwet: ["In strijd met de Grondwet", "st-bad"], strijdig_verdrag_of_eu: ["In strijd met verdragen of EU-recht", "st-bad"], spanning: ["Juridisch omstreden", "st-warn"], geen_bezwaar: ["Geen juridisch bezwaar", "st-ok"], nog_niet_getoetst: ["Nog niet getoetst", "st-open"] };
 function toetsRegel(t) {
   const [tekst, kleur] = TOETS[(t && t.oordeel) || "nog_niet_getoetst"] || TOETS.nog_niet_getoetst;
-  return el("span", {}, el("span", { class: "tag " + kleur }, tekst), t && t.label_publiek ? " " + t.label_publiek : "");
+  const bronnen = (t && t.bronnen) || [];
+  return el("span", {}, el("span", { class: "tag " + kleur }, tekst), t && t.label_publiek ? " " + t.label_publiek : "",
+    bronnen.length ? el("span", { class: "muted" }, " · ", ...bronnen.flatMap((b, i) => [i ? ", " : "", el("a", { href: b.url, target: "_blank", rel: "noopener" }, "bron " + (i + 1))])) : "");
 }
 function teken() {
   for (const b of document.querySelectorAll("nav.tabs button")) b.setAttribute("aria-selected", String(b.dataset.tab === S.tab));
