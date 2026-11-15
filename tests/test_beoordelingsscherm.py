@@ -54,7 +54,7 @@ def test_scherm_doorloopt_coderen_verschillen_resultaat(tmp_path):
         pg.fill("#token","geheim"); pg.click("#login"); pg.wait_for_selector("#paneel form")
         assert "Ingelogd als billy" in pg.inner_text("#wie") and pg.input_value("#token")==""
         assert pg.locator("#belofte option").count()==1
-    assert "In strijd met de Grondwet" in pg.inner_text("#spec") and "Alleen na grondwetswijziging." in pg.inner_text("#spec")
+        assert "In strijd met de Grondwet" in pg.inner_text("#spec") and "Alleen na grondwetswijziging." in pg.inner_text("#spec")
         t=pg.inner_text("#paneel"); assert "3 van 3" in t and "ai zegt" not in t and "22 voor" not in t, t   # blind
         assert "<script>alert(1)</script>" in t   # als tekst getoond, niet uitgevoerd
         pg.screenshot(path=str(tmp_path / "coderen.png"),full_page=True)
