@@ -42,7 +42,8 @@ STATE = DATA / "sync_state.json"
 
 BESLUIT_QUERY = (
     "$select=Id,StemmingsSoort,BesluitSoort,BesluitTekst,Status,GewijzigdOp,Verwijderd"
-    "&$expand=Zaak($select=Id,Nummer,Soort,Titel,Onderwerp,GestartOp),"
+    "&$expand=Zaak($select=Id,Nummer,Soort,Volgnummer,Titel,Onderwerp,GestartOp;"
+    "$expand=Kamerstukdossier($select=Nummer,Toevoeging)),"
     "Stemming($select=Id,Soort,ActorNaam,ActorFractie,FractieGrootte,Vergissing,"
     "Persoon_Id,Fractie_Id,Verwijderd),"
     "Agendapunt($select=Id;$expand=Activiteit($select=Id,Datum,Soort))"
@@ -114,6 +115,12 @@ def vorm_besluit(ruw: dict) -> dict:
             "titel": z.get("Titel"),
             "onderwerp": z.get("Onderwerp"),
             "gestart_op": z.get("GestartOp"),
+            "volgnummer": z.get("Volgnummer"),
+            "dossiers": sorted(
+                str(d.get("Nummer")) + (f"-{d['Toevoeging']}" if d.get("Toevoeging") else "")
+                for d in z.get("Kamerstukdossier", [])
+                if d.get("Nummer") is not None
+            ),
         }
         for z in ruw.get("Zaak", [])
     ]

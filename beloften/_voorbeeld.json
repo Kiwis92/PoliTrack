@@ -1,0 +1,19 @@
+{
+ "_uitleg": "Sjabloon. Kopieer naar beloften/<id>.json (zonder underscore) en vul in VOORDAT je stemmingen bekijkt. Bestanden die met een underscore beginnen worden overgeslagen.",
+ "id": "partij-2023-onderwerp",
+ "partij": "Naam van de partij",
+ "fracties": ["Fractienaam zoals in de Kamerdata, bv. VVD"],
+ "verkiezingsjaar": 2023,
+ "lijst": "verkiezingsbelofte",
+ "thema": "asiel",
+ "citaat": "Letterlijk citaat uit het programma",
+ "bron": "Titel programma, paginanummer, URL",
+ "doel": "Wat er concreet beloofd is",
+ "richting": "Wat een stem in lijn met de belofte inhoudt",
+ "kernelementen": ["Controleerbaar onderdeel 1", "Controleerbaar onderdeel 2"],
+ "horizon": "2027-12-31",
+ "zoektermen": ["maximaal", "tien", "termen"],
+ "dossiers": ["36000"],
+ "periode_van": "2023-12-06",
+ "periode_tot": null
+}

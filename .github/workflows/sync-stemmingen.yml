@@ -1,9 +1,14 @@
-name: Stemmingen ophalen
+name: Stemmingen ophalen en verwerken
 
 on:
   schedule:
     # Elk uur, op minuut 17. De Kamer stemt meestal op dinsdag, maar ook op andere dagen.
     - cron: "17 * * * *"
+  push:
+    branches: [master]
+    paths:
+      - "beloften/**"
+      - "beoordelingen/**"
   workflow_dispatch:
     inputs:
       vanaf:
@@ -41,16 +46,19 @@ jobs:
           if [ -n "$MAX_PAGINAS" ]; then args+=(--max-paginas "$MAX_PAGINAS"); fi
           python pipeline/sync_stemmingen.py "${args[@]}"
 
+      - name: Stemmingen koppelen aan beloften en scores berekenen
+        run: python pipeline/verwerk_beloften.py
+
       - name: Wijzigingen opslaan
         if: always()
         run: |
           git config user.name "stemmingen-sync"
           git config user.email "actions@users.noreply.github.com"
           mkdir -p data && git add data
-          # Alleen committen als er echt besluiten zijn gewijzigd, niet alleen het tijdstip van de run.
-          if git diff --cached --quiet -- data/besluiten; then
-            echo "Geen nieuwe of gewijzigde stemmingen."
+          # Alleen committen als er echt iets is gewijzigd, niet alleen het tijdstip van de run.
+          if git diff --cached --quiet -- data ':!data/sync_state.json'; then
+            echo "Geen nieuwe of gewijzigde stemmingen of scores."
           else
-            git commit -m "Stemmingen bijgewerkt ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git commit -m "Stemmingen en scores bijgewerkt ($(date -u +%Y-%m-%dT%H:%MZ))"
             git push
           fi
