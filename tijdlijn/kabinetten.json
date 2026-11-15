@@ -1,0 +1,47 @@
+{
+ "_uitleg": "Welke partijen op welke dag in de coalitie zaten. Een partij die uit een kabinet stapt is vanaf die dag oppositie. 'demissionair' is een vlag: de positie blijft coalitie. Handmatig bijgehouden met bronnen; de API bevat dit niet.",
+ "kabinetten": [
+  {
+   "naam": "Rutte IV (demissionair)",
+   "van": "2023-12-06",
+   "tot": "2024-07-01",
+   "demissionair_vanaf": "2023-12-06",
+   "coalitie": [
+    {"partij": "VVD"}, {"partij": "D66"}, {"partij": "CDA"}, {"partij": "ChristenUnie"}
+   ],
+   "opmerking": "Alleen het deel van de zittingsperiode na de verkiezingen van 22 november 2023 is opgenomen.",
+   "bronnen": ["https://www.parlement.com/id/vmdmihklyen5/kabinet_schoof_2024_heden"]
+  },
+  {
+   "naam": "Schoof",
+   "van": "2024-07-02",
+   "tot": "2026-02-22",
+   "demissionair_vanaf": "2025-06-03",
+   "coalitie": [
+    {"partij": "PVV", "tot": "2025-06-02"},
+    {"partij": "VVD"},
+    {"partij": "NSC", "tot": "2025-08-21"},
+    {"partij": "BBB"}
+   ],
+   "akkoord": "Hoofdlijnenakkoord PVV, VVD, NSC, BBB (16 mei 2024)",
+   "opmerking": "PVV stapte op 3 juni 2025 uit het kabinet, NSC op 22 augustus 2025. Verkiezingen 29 oktober 2025.",
+   "bronnen": ["https://www.parlement.com/id/vmdmihklyen5/kabinet_schoof_2024_heden"]
+  },
+  {
+   "naam": "Jetten",
+   "van": "2026-02-23",
+   "tot": null,
+   "minderheid": true,
+   "coalitie": [
+    {"partij": "D66"}, {"partij": "VVD"}, {"partij": "CDA"}
+   ],
+   "akkoord": "Coalitieakkoord D66, VVD, CDA 2026-2030 (30 januari 2026)",
+   "opmerking": "Minderheidskabinet met 66 zetels.",
+   "bronnen": ["https://parlement.com/kabinetsformatie-2025-2026", "https://www.tweedekamer.nl/sites/default/files/2026-02/20260221%20Eindverslag%20formatie.pdf"]
+  }
+ ],
+ "verkiezingen": [
+  {"datum": "2023-11-22", "eerste_vergaderdag": "2023-12-06"},
+  {"datum": "2025-10-29", "eerste_vergaderdag": "2025-11-12"}
+ ]
+}

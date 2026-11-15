@@ -35,11 +35,14 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
+from tijdlijn import Tijdlijn
+
 ROOT = Path(__file__).resolve().parent.parent
 BELOFTEN = ROOT / "beloften"
 BEOORDELINGEN = ROOT / "beoordelingen"
 RESULTATEN = ROOT / "resultaten"
 DATA = ROOT / "data"
+TIJDLIJN = ROOT / "tijdlijn"
 
 # Zaaksoort uit de API -> type in de methode
 TYPE = {
@@ -96,16 +99,22 @@ def partijstem(besluit: dict, fracties: set[str]) -> dict:
     return telling
 
 
-def zoek_kandidaten(belofte: dict, besluiten: list[dict]) -> list[dict]:
+def zoek_kandidaten(belofte: dict, besluiten: list[dict], tijdlijn: Tijdlijn | None = None) -> list[dict]:
+    tijdlijn = tijdlijn or Tijdlijn(TIJDLIJN)
     termen = [t.lower() for t in belofte.get("zoektermen", [])]
     dossiers = {str(d) for d in belofte.get("dossiers", [])}
     van, tot = belofte.get("periode_van") or "", belofte.get("periode_tot") or "9999"
-    fracties = {f.lower() for f in belofte["fracties"]}
+    vaste_fracties = {f.lower() for f in belofte.get("fracties") or []}
     kandidaten = []
     for b in besluiten:
         dag = (b.get("datum") or "")[:10]
         if not dag or not (van <= dag <= tot):
             continue
+        # Fractienamen volgen de tijdlijn (fusies, naamswijzigingen); een vaste lijst in de belofte gaat voor.
+        fracties = vaste_fracties or tijdlijn.fracties_op(belofte["partij"], dag)
+        if not fracties:
+            continue
+        positie = tijdlijn.positie_op(belofte["partij"], dag)
         for z in b["zaken"]:
             type_ = TYPE.get(z.get("soort"))
             if not type_:
@@ -134,6 +143,10 @@ def zoek_kandidaten(belofte: dict, besluiten: list[dict]) -> list[dict]:
                     "besluit": b.get("besluittekst"),
                     "stemmingssoort": b.get("stemmingssoort"),
                     "partijstem": stem,
+                    "fracties": sorted(fracties),
+                    "positie": positie["positie"],
+                    "kabinet": positie["kabinet"],
+                    "demissionair": positie["demissionair"],
                     "cluster": f"{dossier}|{dag}|{type_}",
                     "treffer_zoektermen": treffers,
                     "treffer_dossiers": dossier_treffers,
@@ -302,6 +315,7 @@ def bereken_score(belofte: dict, kandidaten: list[dict], beoordeling: dict) -> d
                 "titel": k["titel"],
                 "onderwerp": k["onderwerp"],
                 "besluit": k["besluit"],
+                "positie": k.get("positie", "onbekend"),
                 "richting_voorstem": richting,
                 "cluster": k["cluster"],
                 "c": round(consistent / deelgenomen, 4),
@@ -318,13 +332,30 @@ def bereken_score(belofte: dict, kandidaten: list[dict], beoordeling: dict) -> d
         "nog_te_beoordelen": len(open_),
         "fouten": fouten,
     }
+    fasen = Tijdlijn.fasen(items)
+    posities = [f["positie"] for f in fasen]
+    resultaat["positie"] = posities[0] if len(set(posities)) == 1 else "wisselend"
+    if len(set(posities)) > 1:
+        # Positiewissel (coalitie <-> oppositie): inzet per fase, nooit opgeteld.
+        resultaat["inzet"] = {
+            "oordeel": "Per fase",
+            "markeringen": ["positiewissel"] + (["voorlopig"] if open_ else []),
+            "fasen": [
+                {"positie": f["positie"], "van": f["van"], "tot": f["tot"], **inzet_oordeel(f["items"], open_)}
+                for f in fasen
+            ],
+        }
+        return resultaat
+    resultaat["inzet"] = inzet_oordeel(items, open_)
+    return resultaat
+
+
+def inzet_oordeel(items: list[dict], open_: list) -> dict:
+    """Inzetscore met band, gevoeligheids- en robuustheidscheck voor één reeks stemmingen."""
     inzet = reken_inzet(items)
     if not inzet or inzet["som_gewichten"] < MIN_BEWIJS:
-        resultaat["inzet"] = {"oordeel": "Onvoldoende bewijs", **(inzet or {})}
-        return resultaat
-
+        return {"oordeel": "Onvoldoende bewijs", **(inzet or {})}
     markeringen = []
-    # Gevoeligheid: haal het zwaarste cluster weg.
     gewicht_per_cluster = defaultdict(float)
     for it in items:
         gewicht_per_cluster[it["cluster"]] += it["w"]
@@ -332,14 +363,14 @@ def bereken_score(belofte: dict, kandidaten: list[dict], beoordeling: dict) -> d
     zonder = reken_inzet([dict(it) for it in items if it["cluster"] != zwaarste])
     if not zonder or band(zonder["score"]) != band(inzet["score"]):
         markeringen.append("onzeker")
-    # Robuustheid: alleen wetten en amendementen.
     strikt = reken_inzet([dict(it) for it in items if it["type"] != "motie"])
     if strikt and band(strikt["score"]) != band(inzet["score"]):
         markeringen.append("selectiegevoelig")
     if open_:
         markeringen.append("voorlopig")
-
-    resultaat["inzet"] = {
+    if any(it.get("coalitiediscipline") for it in items):
+        markeringen.append("coalitiediscipline")
+    return {
         "oordeel": band(inzet["score"]),
         **inzet,
         "markeringen": markeringen,
@@ -354,6 +385,9 @@ def main() -> int:
         print("Geen map 'beloften' gevonden; niets te verwerken.")
         return 0
     besluiten = lees_besluiten()
+    tijdlijn = Tijdlijn(TIJDLIJN)
+    if not tijdlijn.beschikbaar:
+        print("Geen tijdlijn gevonden: positie (coalitie/oppositie) blijft onbekend.")
     state_pad = DATA / "sync_state.json"
     peildatum = lees_json(state_pad).get("watermerk") if state_pad.exists() else None
     rij, fout_gevonden = [], False
@@ -363,16 +397,20 @@ def main() -> int:
         if pad.name.startswith("_"):
             continue
         belofte = lees_json(pad)
-        ontbreekt = [v for v in ("id", "partij", "fracties", "zoektermen") if not belofte.get(v)]
+        ontbreekt = [v for v in ("id", "partij", "zoektermen") if not belofte.get(v)]
         if ontbreekt or belofte.get("id") != pad.stem:
             print(f"FOUT {pad.name}: verplichte velden ontbreken {ontbreekt} of id wijkt af van bestandsnaam")
+            fout_gevonden = True
+            continue
+        if not belofte.get("fracties") and not tijdlijn.alle_fracties(belofte["partij"]):
+            print(f"FOUT {pad.name}: partij '{belofte['partij']}' staat niet in tijdlijn/partijen.json en 'fracties' is leeg")
             fout_gevonden = True
             continue
         if len(belofte["zoektermen"]) > 10:
             print(f"FOUT {pad.name}: maximaal tien zoektermen")
             fout_gevonden = True
             continue
-        kandidaten = zoek_kandidaten(belofte, besluiten)
+        kandidaten = zoek_kandidaten(belofte, besluiten, tijdlijn)
         schrijf_json(
             DATA / "kandidaten" / f"{belofte['id']}.json",
             {
@@ -382,7 +420,7 @@ def main() -> int:
                     "dossiers": belofte.get("dossiers", []),
                     "periode_van": belofte.get("periode_van"),
                     "periode_tot": belofte.get("periode_tot"),
-                    "fracties": belofte["fracties"],
+                    "fracties": belofte.get("fracties") or sorted(tijdlijn.alle_fracties(belofte["partij"])),
                     "peildatum": peildatum,
                     "aantal_treffers": len(kandidaten),
                 },
@@ -407,6 +445,7 @@ def main() -> int:
             {
                 "belofte_id": belofte["id"],
                 "partij": belofte["partij"],
+                "positie": score["positie"],
                 "kandidaten": len(kandidaten),
                 **stand,
                 "inzet": score["inzet"].get("oordeel"),

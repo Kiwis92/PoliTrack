@@ -10,6 +10,7 @@ on:
       - "beloften/**"
       - "beoordelingen/**"
       - "resultaten/**"
+      - "tijdlijn/**"
   workflow_dispatch:
     inputs:
       vanaf:
@@ -46,6 +47,9 @@ jobs:
           if [ -n "$VANAF" ]; then args+=(--vanaf "$VANAF"); fi
           if [ -n "$MAX_PAGINAS" ]; then args+=(--max-paginas "$MAX_PAGINAS"); fi
           python pipeline/sync_stemmingen.py "${args[@]}"
+
+      - name: Tijdlijn controleren tegen de API
+        run: python pipeline/tijdlijn_check.py
 
       - name: Stemmingen koppelen aan beloften
         run: python pipeline/verwerk_beloften.py
